@@ -3,10 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/dist/output.css" rel="stylesheet">
+    <link href="./dist/output.css" rel="stylesheet">
     <title>Rest Country API</title>
   </head>
-  <body>
-
+  <body class="bg-[#fafafa] w-full min-h-screen border-box m-0 p-0 grid grid-rows-[8.8%_6.8%_75%] gap-y-8">
+    <header class="bg-white shadow-lg shadow-slate-200/50 flex flex-row justify-between items-center px-[5rem] py-4 w-full">
+      <h1 class="font-geologica font-bold text-[1.3rem] ">Where in the world?</h1>
+      <div class="flex flex-row items-center gap-4">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+        </svg>
+        
+        <h3 class="font-geologica font-normal text-[0.9rem]">Dark Mode</h3>
+      </div>
+    </header>
+    <section class=" mx-[5rem] flex flex-row justify-between">
+      <div class="bg-white flex flex-row gap-6 py-5 font-semibold pl-7 w-[37%] border-2 border-dashed">
+        <label for="search">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.3" stroke="currentColor" class="w-6 h-6 stroke-gray-400">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+          </svg>          
+        </label>
+        <input id="search" type="text" placeholder="Search for a country"/>
+      </div>
+      <div class="bg-white flex flex-row justify-between items-center font-normal border-2 border-dashed font-geologica w-[10%] p-3">
+        <label for="filter">Filter by Region</label>
+        <select id="filter" class="w-[10%]"> 
+          <option class="p-4" value="Africa">Africa</option>
+          <option value="America">America</option>
+          <option value="Asia">Asia</option>
+          <option value="Europe">Europe</option>
+          <option value="Oceania">Oceania</option>
+        </select>
+      </div>
+    </section>
+    <main class="bg-red-500 mb-[0.8rem] mx-[5rem]">
+    </main>
   </body>
 </html>
