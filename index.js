@@ -1,7 +1,7 @@
 const countriesEndpoint = 'https://restcountries.com/v3.1/all';
 
 const countryDefaultLoader=(countries)=>{
-    countries.forEach((country) =>{
+    countries.forEach((country,index) =>{
         // console.log(country);
         console.log("flag:"+ country.flags['png']);
         console.log("name:"+ country.name['common']);
@@ -44,9 +44,12 @@ const countryDefaultLoader=(countries)=>{
         countryCard.classList.add('flex','flex-col','border-2','border-dashed');
         // countryCard.classList.add('w-[20%]','h-[28%]','border-2','border-dashed')
 
+        // Set data-index attribute
+        countryCard.setAttribute('data-index', index);
+
         const countryContainer = document.getElementById('country-container')
         countryContainer.appendChild(countryCard);
-        console.log(countryContainer)
+        // console.log(countryContainer)
     })
     return countryContainer;
 
