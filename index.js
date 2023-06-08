@@ -1,14 +1,12 @@
 const countriesEndpoint = 'https://restcountries.com/v3.1/all';
 
+
+
+//default function to load REST Country Data
+let defaultLoad ;
 const countryDefaultLoader=(countries)=>{
-    countries.forEach((country,index) =>{
-        // console.log(country);
-        console.log("flag:"+ country.flags['png']);
-        console.log("name:"+ country.name['common']);
-        console.log("population:"+ country.population);
-        console.log("region:"+ country.region);
-        console.log("capital:"+ country.capital);
-        
+    defaultLoad = countries
+    countries.forEach((country,index) =>{        
         //creating flag element
         const flagImg = document.createElement('img');
         flagImg.src = country.flags['png'];
@@ -47,14 +45,16 @@ const countryDefaultLoader=(countries)=>{
         const countryCard = document.createElement('div');
         countryCard.appendChild(flagImg);
         countryCard.appendChild(cardDetail);
-        countryCard.classList.add('flex','flex-col','cursor-pointer','shadow-lg','shadow-slate-200/50','h-[18rem]');
+        countryCard.classList.add('flex','flex-col','cursor-pointer','shadow-lg','shadow-slate-200/50','h-[18rem]','country-card');
 
 
         // Set data-index attribute
         countryCard.setAttribute('data-index', index);
         countryCard.addEventListener('click',(event)=>{
             const index = event.currentTarget.dataset.index;
+            // const className = event.currentTarget.classList;
             console.log("Country index: " + index);
+            // console.log("class name: " + className);
         });
 
         const countryContainer = document.getElementById('country-container')
@@ -66,6 +66,29 @@ const countryDefaultLoader=(countries)=>{
 
 }
 
+const searchQuery= () =>{
+    const searchValue = document.getElementById('search').value.toLowerCase();
+    const countryCards = document.querySelectorAll('.country-card')
+
+    if( searchValue === ''){
+        countryDefaultLoader(defaultLoad);
+        return
+    }
+    
+    //Function to load all classnames for country cards
+    //convert them into a array then for the whose H1 element value to includes
+    //the search value from the searchInput field
+    Array.from(countryCards).forEach((countryCard) => {
+        const countryName =  countryCard.querySelector('h1').textContent.toLowerCase();
+        // console.log("Country name: " + countryName);
+        if(countryName.includes(searchValue)) {
+            countryCard.style.display = 'block;'
+        } else{
+            countryCard.style.display = 'none';
+        }
+    });
+}
+
 const fetchData = async()=>{
     try{
         const response = await fetch(countriesEndpoint);
@@ -74,11 +97,17 @@ const fetchData = async()=>{
         }
         const countries = await response.json();
         countryDefaultLoader(countries);
+        // searchQuery(countries);
     }catch(error){
         console.log(error);
     }
 }
 
 document.addEventListener("DOMContentLoaded",()=>{
+    const searchInput = document.getElementById("search");
+    searchInput.addEventListener("input",searchQuery);
+    // searchInput.addEventListener("input",()=>{})
+    // if(searchInput.value === '')
     fetchData();
+
 });
