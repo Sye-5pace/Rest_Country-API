@@ -54,12 +54,10 @@ const countryDefaultLoader=(countries)=>{
 
         // Set data-index attribute
         countryCard.setAttribute('data-index', index);
-        countryCard.addEventListener('click',(event)=>{
+        /* countryCard.addEventListener('click',(event)=>{
             const index = event.currentTarget.dataset.index;
-            // const className = event.currentTarget.classList;
             console.log("Country index: " + index);
-            // console.log("class name: " + className);
-        });
+        }); */
 
         const countryContainer = document.getElementById('country-container')
         countryContainer.appendChild(countryCard);
@@ -67,13 +65,15 @@ const countryDefaultLoader=(countries)=>{
     return countryContainer
 }
 
+
+
+///Search for a country functionality
 const searchQuery= () =>{
     const searchValue = document.getElementById('search').value.toLowerCase();
     const countryCards = document.querySelectorAll('.country-card')
 
     if( searchValue === ''){
         return countryDefaultLoader(defaultLoad);
-    
     }
     
     //Function to load all classnames for country cards
@@ -81,7 +81,6 @@ const searchQuery= () =>{
     //the search value from the searchInput field
     Array.from(countryCards).forEach((countryCard) => {
         const countryName =  countryCard.querySelector('h1').textContent.toLowerCase();
-        // console.log("Country name: " + countryName);
         if(countryName.includes(searchValue)) {
             countryCard.style.display = 'block;'
         } else{
@@ -90,6 +89,15 @@ const searchQuery= () =>{
     });
 }
 
+
+//Redirect Functionality
+const previewRedirect = (event)=>{
+    const index = event.currentTarget.dataset.index;
+    console.log(defaultLoad[index])
+}
+    
+
+///GET Req from REST Countries API
 const fetchData = async()=>{
     try{
         const response = await fetch(countriesEndpoint);
@@ -98,17 +106,21 @@ const fetchData = async()=>{
         }
         const countries = await response.json();
         countryDefaultLoader(countries);
-        // searchQuery(countries);
     }catch(error){
         console.log(error);
     }
 }
 
+//DOMContentLoaded for the main page
 document.addEventListener("DOMContentLoaded",()=>{
     const searchInput = document.getElementById("search");
     searchInput.addEventListener("input",searchQuery);
-    // searchInput.addEventListener("input",()=>{})
-    // if(searchInput.value === '')
+    
+    const countriesCard = document.querySelectorAll('.country-card')
+    countriesCard.forEach((countryCard) => {
+        countryCard.addEventListener('click',previewRedirect);
+    })
+    
     fetchData();
 
 });
