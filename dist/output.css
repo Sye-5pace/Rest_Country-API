@@ -628,32 +628,84 @@ video {
   grid-template-rows: ;
 }
 
-.grid-rows-\[9\%\] {
-  grid-template-rows: 9%;
+.grid-rows-\[\(\%\)\] {
+  grid-template-rows: (%);
+}
+
+.grid-rows-\[9\] {
+  grid-template-rows: 9;
 }
 
 .grid-rows-\[9\%_\] {
   grid-template-rows: 9%;
 }
 
-.grid-rows-\[9\%_7\] {
-  grid-template-rows: 9% 7;
-}
-
 .grid-rows-\[9\%_7\%\] {
   grid-template-rows: 9% 7%;
 }
 
-.grid-rows-\[9\%_7\%_\] {
-  grid-template-rows: 9% 7%;
-}
-
-.grid-rows-\[9\%_7\%_84\] {
-  grid-template-rows: 9% 7% 84;
+.grid-rows-\[9\%_7\%_8\] {
+  grid-template-rows: 9% 7% 8;
 }
 
 .grid-rows-\[9\%_7\%_84\%\] {
   grid-template-rows: 9% 7% 84%;
+}
+
+.grid-rows-\[4\%_7\%_84\%\] {
+  grid-template-rows: 4% 7% 84%;
+}
+
+.grid-rows-\[4\%_2\%_84\%\] {
+  grid-template-rows: 4% 2% 84%;
+}
+
+.grid-rows-\[2\%_2\%_84\%\] {
+  grid-template-rows: 2% 2% 84%;
+}
+
+.grid-rows-\[1\%_2\%_84\%\] {
+  grid-template-rows: 1% 2% 84%;
+}
+
+.grid-rows-\[0\.\%_2\%_84\%\] {
+  grid-template-rows: 0.% 2% 84%;
+}
+
+.grid-rows-\[0\.8\%_2\%_84\%\] {
+  grid-template-rows: 0.8% 2% 84%;
+}
+
+.grid-rows-\[0\.7\%_2\%_84\%\] {
+  grid-template-rows: 0.7% 2% 84%;
+}
+
+.grid-rows-\[0\.6\%_2\%_84\%\] {
+  grid-template-rows: 0.6% 2% 84%;
+}
+
+.grid-rows-\[0\.58\%_2\%_84\%\] {
+  grid-template-rows: 0.58% 2% 84%;
+}
+
+.grid-rows-\[0\.48\%_2\%_84\%\] {
+  grid-template-rows: 0.48% 2% 84%;
+}
+
+.grid-rows-\[0\.4\%_\%_84\%\] {
+  grid-template-rows: 0.4% % 84%;
+}
+
+.grid-rows-\[0\.4\%_1\%_84\%\] {
+  grid-template-rows: 0.4% 1% 84%;
+}
+
+.grid-rows-\[0\.4\%_0\%_84\%\] {
+  grid-template-rows: 0.4% 0% 84%;
+}
+
+.grid-rows-\[0\.4\%_0\.3\%_84\%\] {
+  grid-template-rows: 0.4% 0.3% 84%;
 }
 
 .flex-row {

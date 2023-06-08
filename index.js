@@ -6,6 +6,10 @@ const countriesEndpoint = 'https://restcountries.com/v3.1/all';
 let defaultLoad ;
 const countryDefaultLoader=(countries)=>{
     defaultLoad = countries
+
+    const countryContainer = document.getElementById('country-container');
+    countryContainer.innerHTML = "";
+
     countries.forEach((country,index) =>{        
         //creating flag element
         const flagImg = document.createElement('img');
@@ -59,11 +63,8 @@ const countryDefaultLoader=(countries)=>{
 
         const countryContainer = document.getElementById('country-container')
         countryContainer.appendChild(countryCard);
-        
-        // console.log(countryContainer)
     })
     return countryContainer
-
 }
 
 const searchQuery= () =>{
@@ -71,8 +72,8 @@ const searchQuery= () =>{
     const countryCards = document.querySelectorAll('.country-card')
 
     if( searchValue === ''){
-        countryDefaultLoader(defaultLoad);
-        return
+        return countryDefaultLoader(defaultLoad);
+    
     }
     
     //Function to load all classnames for country cards
