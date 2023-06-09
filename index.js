@@ -1,6 +1,11 @@
 const countriesEndpoint = 'https://restcountries.com/v3.1/all';
 
-
+//Redirect Functionality
+// const preview = (event,countries)=>{
+//     const index = event.currentTarget.dataset.index;
+//     const country = countries[index]
+//     console.log('Clicked for preview to: ' + country)
+// }
 
 //default function to load REST Country Data
 let defaultLoad ;
@@ -54,10 +59,51 @@ const countryDefaultLoader=(countries)=>{
 
         // Set data-index attribute
         countryCard.setAttribute('data-index', index);
-        /* countryCard.addEventListener('click',(event)=>{
-            const index = event.currentTarget.dataset.index;
-            console.log("Country index: " + index);
-        }); */
+
+        //Event handler to pass data through url to preview page
+        countryCard.addEventListener('click',(event,index)=>{
+            const countryIndex = event.currentTarget.dataset.index;
+            const countryFlag = country.flags.png
+            const countryName = country.name['common']
+            const nativeName = country.name.nativeName.ara
+            const population = country.population
+            const countryRegion = country.region
+            const countrySubRegion = country.subregion
+            const countryCapital = country.capital
+            const countryTld = country.tld['0']
+            const countryCurrency = country.currencies
+            const countryLanguages = country.languages.ara
+            const countryNeighbors = country.borders ;
+
+            /* console.log(countryIndex)
+            console.log("Flag: " + countryFlag)
+            console.log("countryName: " + countryName)
+            console.log("Native name: " +  nativeName)
+            console.log("Population: " +population)
+            console.log("Region: " +countryRegion)
+            console.log("subregion: " +countrySubRegion)
+            console.log("capital: " +countryCapital)
+            console.log("TLD: " + countryTld)
+            console.log("Currency: " +  countryCurrency)
+            console.log("Languages: " + countryLanguages)
+            console.log("borders: " + countryNeighbors); */
+
+            const url = "previewpage.html?" +
+            "&redirectFlag=" + encodeURIComponent(countryFlag) +
+            "&redirectName=" + encodeURIComponent(countryName) +
+            "&redirectNativeName=" + encodeURIComponent(nativeName) +
+            "&redirectPopulation=" + encodeURIComponent(population) +
+            "&redirectRegion=" + encodeURIComponent(countryRegion) +
+            "&redirectSubRegion=" + encodeURIComponent(countrySubRegion) +
+            "&redirectCapital=" + encodeURIComponent(countryCapital) +
+            "&redirectTld=" + encodeURIComponent(countryTld) + 
+            "&redirectCurrency=" + encodeURIComponent(countryCurrency) +
+            "&redirectLanguage=" + encodeURIComponent(countryLanguages) + 
+            "&redirectNeighbors=" + encodeURIComponent(countryNeighbors);
+
+            //  console.log(url)
+            window.location.href = url;
+        });
 
         const countryContainer = document.getElementById('country-container')
         countryContainer.appendChild(countryCard);
@@ -88,13 +134,6 @@ const searchQuery= () =>{
         }
     });
 }
-
-
-//Redirect Functionality
-const previewRedirect = (event)=>{
-    const index = event.currentTarget.dataset.index;
-    console.log(defaultLoad[index])
-}
     
 
 ///GET Req from REST Countries API
@@ -106,6 +145,7 @@ const fetchData = async()=>{
         }
         const countries = await response.json();
         countryDefaultLoader(countries);
+        console.log(countries)
     }catch(error){
         console.log(error);
     }
@@ -116,11 +156,11 @@ document.addEventListener("DOMContentLoaded",()=>{
     const searchInput = document.getElementById("search");
     searchInput.addEventListener("input",searchQuery);
     
-    const countriesCard = document.querySelectorAll('.country-card')
+    /* const countriesCard = document.querySelectorAll('.country-card')
     countriesCard.forEach((countryCard) => {
         countryCard.addEventListener('click',previewRedirect);
     })
-    
+     */
     fetchData();
 
 });

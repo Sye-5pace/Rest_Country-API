@@ -624,10 +624,6 @@ video {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-.grid-rows-\[0\.4\%_0\.3\%_84\%\] {
-  grid-template-rows: 0.4% 0.3% 84%;
-}
-
 .grid-rows-\[9\%_7\%\] {
   grid-template-rows: 9% 7%;
 }
@@ -689,6 +685,10 @@ video {
 
 .border-2 {
   border-width: 2px;
+}
+
+.border {
+  border-width: 1px;
 }
 
 .border-dashed {
