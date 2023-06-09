@@ -3,7 +3,8 @@ const plugin = require('tailwindcss/plugin');
 export default {
   content: [
     '*.js',
-    '*.html'
+    'index.html',
+    'previewpage.html',
   ],
   theme: {
     screens: {
