@@ -63,43 +63,49 @@ const countryDefaultLoader=(countries)=>{
         //Event handler to pass data through url to preview page
         countryCard.addEventListener('click',(event,index)=>{
             const countryIndex = event.currentTarget.dataset.index;
+            const nativeNameKey = Object.keys(country.name.nativeName)[0]
+            const languagesKey = Object.keys(country.languages)[0]
+            const currenciesKey = Object.keys(country.currencies)[0]
+            
+
+            
             const countryFlag = country.flags.png
             const countryName = country.name['common']
-            const nativeName = country.name.nativeName.ara
+            const nativeName = country.name.nativeName[nativeNameKey].common
             const population = country.population
             const countryRegion = country.region
             const countrySubRegion = country.subregion
             const countryCapital = country.capital
             const countryTld = country.tld['0']
-            const countryCurrency = country.currencies
-            const countryLanguages = country.languages.ara
+            const countryCurrency = country.currencies[currenciesKey].name
+            const countryLanguages = country.languages[languagesKey]
             const countryNeighbors = country.borders ;
 
-            /* console.log(countryIndex)
-            console.log("Flag: " + countryFlag)
-            console.log("countryName: " + countryName)
-            console.log("Native name: " +  nativeName)
-            console.log("Population: " +population)
-            console.log("Region: " +countryRegion)
-            console.log("subregion: " +countrySubRegion)
-            console.log("capital: " +countryCapital)
-            console.log("TLD: " + countryTld)
-            console.log("Currency: " +  countryCurrency)
-            console.log("Languages: " + countryLanguages)
-            console.log("borders: " + countryNeighbors); */
+            // console.log(countryIndex)
+            // console.log("Flag: " + countryFlag)
+            // console.log("countryName: " + countryName)
+            // console.log("Native name: " +  nativeName)
+            // console.log("Population: " +population)
+            // console.log("Region: " +countryRegion)
+            // console.log("subregion: " +countrySubRegion)
+            // console.log("capital: " +countryCapital)
+            // console.log("TLD: " + countryTld)
+            // console.log("Currency: " +  countryCurrency)
+            // console.log("Languages: " + countryLanguages)
+            // console.log("borders: " + countryNeighbors);
 
             const url = "previewpage.html?" +
-            "&redirectFlag=" + encodeURIComponent(countryFlag) +
-            "&redirectName=" + encodeURIComponent(countryName) +
-            "&redirectNativeName=" + encodeURIComponent(nativeName) +
-            "&redirectPopulation=" + encodeURIComponent(population) +
-            "&redirectRegion=" + encodeURIComponent(countryRegion) +
+             "&redirectFlag=" + encodeURIComponent(countryFlag) +
+             "&redirectName=" + encodeURIComponent(countryName) +
+             "&redirectNativeName=" + encodeURIComponent(nativeName) +
+             "&redirectPopulation=" + encodeURIComponent(population) +
+             "&redirectRegion=" + encodeURIComponent(countryRegion) +
             "&redirectSubRegion=" + encodeURIComponent(countrySubRegion) +
-            "&redirectCapital=" + encodeURIComponent(countryCapital) +
-            "&redirectTld=" + encodeURIComponent(countryTld) + 
-            "&redirectCurrency=" + encodeURIComponent(countryCurrency) +
-            "&redirectLanguage=" + encodeURIComponent(countryLanguages) + 
-            "&redirectNeighbors=" + encodeURIComponent(countryNeighbors);
+             "&redirectCapital=" + encodeURIComponent(countryCapital) +
+             "&redirectTld=" + encodeURIComponent(countryTld) + 
+             "&redirectCurrency=" + encodeURIComponent(countryCurrency) +
+             "&redirectLanguage=" + encodeURIComponent(countryLanguages) + 
+             "&redirectNeighbors=" + encodeURIComponent(countryNeighbors);
 
             //  console.log(url)
             window.location.href = url;
