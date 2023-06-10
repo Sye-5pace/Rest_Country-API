@@ -39,7 +39,7 @@ const countryDefaultLoader=(countries)=>{
         
         //creating capital element then reassign corresponding values
         const h3Capital = document.createElement('h3');
-        h3Capital.innerHTML ="<span class='font-semibold'>Capital</span>: " + country.capital
+        h3Capital.innerHTML ="<span class='font-semibold font-geologica'>Capital</span>: " + country.capital;
         h3Capital.classList.add('font-geologica','text-[0.9rem]')
 
         //creating card-detail container then reassign elements
@@ -81,18 +81,6 @@ const countryDefaultLoader=(countries)=>{
             const countryLanguages = country.languages[languagesKey]
             const countryNeighbors = country.borders ;
 
-            // console.log(countryIndex)
-            // console.log("Flag: " + countryFlag)
-            // console.log("countryName: " + countryName)
-            // console.log("Native name: " +  nativeName)
-            // console.log("Population: " +population)
-            // console.log("Region: " +countryRegion)
-            // console.log("subregion: " +countrySubRegion)
-            // console.log("capital: " +countryCapital)
-            // console.log("TLD: " + countryTld)
-            // console.log("Currency: " +  countryCurrency)
-            // console.log("Languages: " + countryLanguages)
-            // console.log("borders: " + countryNeighbors);
 
             const url = "previewpage.html?" +
              "&redirectFlag=" + encodeURIComponent(countryFlag) +
@@ -100,7 +88,7 @@ const countryDefaultLoader=(countries)=>{
              "&redirectNativeName=" + encodeURIComponent(nativeName) +
              "&redirectPopulation=" + encodeURIComponent(population) +
              "&redirectRegion=" + encodeURIComponent(countryRegion) +
-            "&redirectSubRegion=" + encodeURIComponent(countrySubRegion) +
+             "&redirectSubRegion=" + encodeURIComponent(countrySubRegion) +
              "&redirectCapital=" + encodeURIComponent(countryCapital) +
              "&redirectTld=" + encodeURIComponent(countryTld) + 
              "&redirectCurrency=" + encodeURIComponent(countryCurrency) +
@@ -162,11 +150,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     const searchInput = document.getElementById("search");
     searchInput.addEventListener("input",searchQuery);
     
-    /* const countriesCard = document.querySelectorAll('.country-card')
-    countriesCard.forEach((countryCard) => {
-        countryCard.addEventListener('click',previewRedirect);
-    })
-     */
+
     fetchData();
 
 });

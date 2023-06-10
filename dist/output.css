@@ -608,6 +608,10 @@ video {
   height: 65%;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -648,6 +652,10 @@ video {
   width: 100%;
 }
 
+.w-10 {
+  width: 2.5rem;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -668,8 +676,64 @@ video {
   grid-template-columns: 38% 55%;
 }
 
+.grid-cols-\[48\%_55\%\] {
+  grid-template-columns: 48% 55%;
+}
+
+.grid-cols-\[48\%_\%\] {
+  grid-template-columns: 48% %;
+}
+
+.grid-cols-\[48\%_52\%\] {
+  grid-template-columns: 48% 52%;
+}
+
+.grid-cols-\[48\%_40\%\] {
+  grid-template-columns: 48% 40%;
+}
+
+.grid-cols-\[48\%_42\%\] {
+  grid-template-columns: 48% 42%;
+}
+
+.grid-cols-\[50\%_42\%\] {
+  grid-template-columns: 50% 42%;
+}
+
+.grid-cols-\[50\%_50\%\] {
+  grid-template-columns: 50% 50%;
+}
+
+.grid-cols-\[50\%_48\%\] {
+  grid-template-columns: 50% 48%;
+}
+
+.grid-cols-\[49\%_48\%\] {
+  grid-template-columns: 49% 48%;
+}
+
 .grid-rows-\[9\%_5\%_64\%\] {
   grid-template-rows: 9% 5% 64%;
+}
+
+.grid-rows-\[9\%_5\%_60\%\] {
+  grid-template-rows: 9% 5% 60%;
+}
+
+.grid-rows-\[9\%_5\%_\%\] {
+  grid-template-rows: 9% 5% %;
+}
+
+.grid-rows-\[9\%_5\%_57\%\] {
+  grid-template-rows: 9% 5% 57%;
+}
+
+.grid-rows-\[9\%_5\%_55\%\] {
+  grid-template-rows: 9% 5% 55%;
+}
+
+.grid-rows-\[9\%_5\%_50\%\] {
+  grid-template-rows: 9% 5% 50%;
 }
 
 .flex-row {
@@ -726,6 +790,18 @@ video {
   row-gap: 1.8rem;
 }
 
+.gap-y-6 {
+  row-gap: 1.5rem;
+}
+
+.gap-y-4 {
+  row-gap: 1rem;
+}
+
+.gap-y-64 {
+  row-gap: 16rem;
+}
+
 .rounded-\[0\.3rem\] {
   border-radius: 0.3rem;
 }
@@ -746,6 +822,15 @@ video {
 
 .border-dashed {
   border-style: dashed;
+}
+
+.border-\[\] {
+  border-color: ;
+}
+
+.border-amber-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(251 191 36 / var(--tw-border-opacity));
 }
 
 .bg-\[\#fafafa\] {
@@ -829,6 +914,11 @@ video {
   padding-bottom: 1.25rem;
 }
 
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
 .pl-4 {
   padding-left: 1rem;
 }
@@ -861,6 +951,26 @@ video {
   font-size: 3.6rem;
 }
 
+.text-\[3rem\] {
+  font-size: 3rem;
+}
+
+.text-\[1\.5rem\] {
+  font-size: 1.5rem;
+}
+
+.text-\[0\.3rem\] {
+  font-size: 0.3rem;
+}
+
+.text-\[0\.5rem\] {
+  font-size: 0.5rem;
+}
+
+.text-\[3\.7rem\] {
+  font-size: 3.7rem;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -881,6 +991,10 @@ video {
 .text-gray-700 {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+
+.text-\[3rek\] {
+  color: 3rek;
 }
 
 .shadow-lg {
