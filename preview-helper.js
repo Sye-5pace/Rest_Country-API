@@ -79,16 +79,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-        console.log(countryFlag);
-        console.log(countryName);
-        console.log(nativeName);
-        console.log(countryPopulation);
-        console.log(countryRegion);
-        console.log(subRegion);
-        console.log(capital);
-        console.log(countryTld);
-        console.log(countryCurrency);
-        console.log(language);
+        // console.log(countryFlag);
+        // console.log(countryName);
+        // console.log(nativeName);
+        // console.log(countryPopulation);
+        // console.log(countryRegion);
+        // console.log(subRegion);
+        // console.log(capital);
+        // console.log(countryTld);
+        // console.log(countryCurrency);
+        // console.log(language);
     }
 
     previewUpdater()
