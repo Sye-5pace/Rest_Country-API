@@ -128,7 +128,12 @@ const searchQuery= () =>{
         }
     });
 }
-    
+ 
+//Filter by region
+const filterRegion =(event)=>{
+    const regionIndex = event.currentTarget.dataset.index;
+    console.log("Region Index: " + regionIndex);
+}
 
 ///GET Req from REST Countries API
 const fetchData = async()=>{
@@ -150,6 +155,19 @@ document.addEventListener("DOMContentLoaded",()=>{
     const searchInput = document.getElementById("search");
     searchInput.addEventListener("input",searchQuery);
     
+    const filterContainer= document.getElementById("filter-items");
+    const filterHandler = document.getElementById("filter-handler");
+    filterHandler.addEventListener('click',()=>{
+        filterContainer.style.display="block";
+    })
+    
+    const filterItems = document.querySelectorAll(".filter-item");
+    filterItems.forEach((filterItem)=>{
+        filterItem.addEventListener("click",filterRegion);
+    });
+     /* filterItems.addEventListener('mouseout',(event)=>{
+        filterItems.style.display="none";
+     }) */
 
     fetchData();
 

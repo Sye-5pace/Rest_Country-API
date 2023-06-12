@@ -26,19 +26,18 @@
         <input id="search" type="text" placeholder="Search for a country" class="focus:outline-none w-[18rem]"/>
       </div>
       <div class="bg-white flex flex-col justify-between items-center font-normal border-2 border-dashed font-geologica w-[13%] p-3 shadow-lg shadow-slate-200/50">
-        <label for="filter" class="flex flex-row items-center gap-2 cursor-pointer ">
+        <div id="filter-handler" class="flex flex-row items-center gap-2 cursor-pointer ">
           Filter by Region
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
           </svg>
-        </label>
-        <!-- <select id="filter" class="flex flex-row items-center gap-2 cursor-pointer ">  -->
-          <!-- <option class="p-4 focus:outline-none" value="">Filter by Region</option> -->
-          <!-- <option class="p-4 focus:outline-none" value="Africa">Africa</option> -->
-          <!-- <option class="p-4 focus:outline-none" value="America">America</option> -->
-          <!-- <option class="p-4 focus:outline-none" value="Asia">Asia</option> -->
-          <!-- <option class="p-4 focus:outline-none" value="Europe">Europe</option> -->
-        <!-- </select> -->
+        </div>
+      </div>
+      <div id="filter-items"  class="absolute hidden ml-[77.8%] mt-[4%] w-[11.4%] p-2 bg-white flex flex-col gap-6 font-semibold pl-7  border-2 border-dashed shadow-lg shadow-slate-200/50">
+        <p data-index="1" class="cursor-pointer filter-item">Africa</p>
+        <p data-index="2" class="cursor-pointer filter-item">America</p>
+        <p data-index="3" class="cursor-pointer filter-item">Asia</p>
+        <p data-index="4" class="cursor-pointer filter-item">Europe</p>
       </div>
     </section>
     <main id="country-container" class=" mb-[0.8rem] mx-[5rem] grid grid-cols-4 mobile:grid-cols-1 gap-y-[1.8rem] gap-x-14">
