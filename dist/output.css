@@ -696,52 +696,8 @@ video {
   grid-template-rows: 9% 5% 48%;
 }
 
-.grid-rows-\[\] {
-  grid-template-rows: ;
-}
-
-.grid-rows-\[\(\)\] {
-  grid-template-rows: ();
-}
-
-.grid-rows-\[9\%\] {
-  grid-template-rows: 9%;
-}
-
-.grid-rows-\[9\%_\] {
-  grid-template-rows: 9%;
-}
-
-.grid-rows-\[9\%_7\] {
-  grid-template-rows: 9% 7;
-}
-
-.grid-rows-\[9\%_7\&\] {
-  grid-template-rows: 9% 7&;
-}
-
-.grid-rows-\[9\%_7\%\] {
-  grid-template-rows: 9% 7%;
-}
-
-.grid-rows-\[9\%_7\%_\] {
-  grid-template-rows: 9% 7%;
-}
-
 .grid-rows-\[9\%_7\%_84\%\] {
   grid-template-rows: 9% 7% 84%;
-}
-
-.grid-rows-\[3\%_1\%_96\%\] {
-  grid-template-rows: 3% 1% 96%;
-}
-
-.grid-rows-\[0\.5\%_1\%_96\%\] {
-  grid-template-rows: 0.5% 1% 96%;
-}
-
-.grid-rows-\[0\.5\%_0\.3\%_96\%\] {
-  grid-template-rows: 0.5% 0.3% 96%;
 }
 
 .flex-row {
@@ -791,6 +747,10 @@ video {
   row-gap: 0.25rem;
 }
 
+.gap-y-10 {
+  row-gap: 2.5rem;
+}
+
 .gap-y-16 {
   row-gap: 4rem;
 }
@@ -805,10 +765,6 @@ video {
 
 .gap-y-\[1\.8rem\] {
   row-gap: 1.8rem;
-}
-
-.gap-y-10 {
-  row-gap: 2.5rem;
 }
 
 .rounded-\[0\.3rem\] {
@@ -841,6 +797,46 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-\[\] {
+  background-color: ;
+}
+
+.bg-\[\#\] {
+  background-color: #;
+}
+
+.bg-\[\#2b\] {
+  background-color: #2b;
+}
+
+.bg-\[\#2b3\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 187 51 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#2b3642\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(43 54 66 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#2\] {
+  background-color: #2;
+}
+
+.bg-\[\#212\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 17 34 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#212f3\] {
+  background-color: #212f3;
+}
+
+.bg-\[\#212f36\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(33 47 54 / var(--tw-bg-opacity));
 }
 
 .stroke-gray-400 {
@@ -959,13 +955,15 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.shadow {
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .shadow-slate-200\/50 {
   --tw-shadow-color: rgb(226 232 240 / 0.5);
   --tw-shadow: var(--tw-shadow-colored);
-}
-
-.filter {
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .focus\:outline-none:focus {

@@ -38,7 +38,7 @@ const countryDefaultLoader=(countries)=>{
 
         //creating card-detail container then reassign elements
         const cardDetail = document.createElement('div');
-        cardDetail.classList.add('bg-white','h-[45%]','rounded-b-lg','pl-4','pt-2','flex','flex-col','gap-y-1')
+        cardDetail.classList.add('bg-white','h-[45%]','rounded-b-lg','pl-4','pt-2','flex','flex-col','gap-y-1','.card-detail')
         cardDetail.appendChild(h1);
         cardDetail.appendChild(h3Population);
         cardDetail.appendChild(h3Region);
@@ -164,6 +164,9 @@ const fetchData = async()=>{
 
 //DOMContentLoaded for the main page
 document.addEventListener("DOMContentLoaded",()=>{
+    //load page will fetch content
+    fetchData();
+
     const searchInput = document.getElementById("search");
     searchInput.addEventListener("input",searchQuery);
     
@@ -185,11 +188,44 @@ document.addEventListener("DOMContentLoaded",()=>{
         countryDefaultLoader(defaultLoad);
     })
     
+    //FilterQuery EventListener
     const filterItems = document.querySelectorAll(".filter-item");
     filterItems.forEach((filterItem)=>{
         filterItem.addEventListener("click",filterQuery)
     });
 
-    fetchData();
+    //Theme Switcher EventListeners:
+    const lightMode = document.querySelector("#light-mode");
+    const darkMode = document.querySelector("#dark-mode");
+
+    ///Dark Mode eventlistener
+    darkMode.addEventListener("click",(event)=>{
+        event.currentTarget.style.display = "none";
+        lightMode.style.display = "flex";
+        const header = document.querySelector("header");
+        const body = document.querySelector("body");
+        const searchContainer = document.querySelector("#search-container");
+        const filterContainer = document.querySelector("#filter-container");
+        const countryCards = document.querySelectorAll(".country-card");
+        const countryDetails = document.querySelectorAll(".country-details")
+
+        /* countryCards.forEach((countryCard)=>{
+            countryCard
+        }) */
+        //note to self: how to style shadow in CSS-JS
+
+        header.style.backgroundColor = '#2b3642'
+        header.style.color = '#fff';
+        body.style.backgroundColor = '#212f36'
+    });
+
+    lightMode.addEventListener("click",(event)=>{
+        event.currentTarget.style.display = "none";
+        darkMode.style.display = "flex";
+    });
+
+
+
+
 
 });
