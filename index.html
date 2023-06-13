@@ -6,7 +6,7 @@
     <link href="./dist/output.css" rel="stylesheet">
     <title>Rest Country API</title>
   </head>
-  <body class="bg-[#fafafa] w-full min-h-screen border-box m-0 p-0 grid gap-y-8">
+  <body class="bg-[#fafafa] w-full min-h-screen border-box m-0 p-0 grid  gap-y-8">
     <header class="bg-white shadow-lg shadow-slate-200/50 flex flex-row justify-between items-center px-[5rem] py-4 w-full">
       <h1 class="font-geologica font-bold text-[1.3rem] ">Where in the world?</h1>
       <div class="flex flex-row items-center gap-4">
@@ -28,14 +28,17 @@
       <div class="bg-white flex flex-col justify-between items-center font-normal border-2 border-dashed font-geologica w-[13%] p-3 shadow-lg shadow-slate-200/50">
         <div id="filter-handler" class="flex flex-row items-center gap-2 cursor-pointer ">
           Filter by Region
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+          <svg id="down" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
           </svg>
+          <svg id="up" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 hidden">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+          </svg>          
         </div>
       </div>
       <div id="filter-items"  class="absolute hidden ml-[77.8%] mt-[4%] w-[11.4%] p-2 bg-white flex flex-col gap-6 font-semibold pl-7  border-2 border-dashed shadow-lg shadow-slate-200/50">
         <p data-index="1" class="cursor-pointer filter-item">Africa</p>
-        <p data-index="2" class="cursor-pointer filter-item">America</p>
+        <p data-index="2" class="cursor-pointer filter-item">Americas</p>
         <p data-index="3" class="cursor-pointer filter-item">Asia</p>
         <p data-index="4" class="cursor-pointer filter-item">Europe</p>
       </div>

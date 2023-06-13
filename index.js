@@ -1,11 +1,5 @@
 const countriesEndpoint = 'https://restcountries.com/v3.1/all';
 
-//Redirect Functionality
-// const preview = (event,countries)=>{
-//     const index = event.currentTarget.dataset.index;
-//     const country = countries[index]
-//     console.log('Clicked for preview to: ' + country)
-// }
 
 //default function to load REST Country Data
 let defaultLoad ;
@@ -19,7 +13,7 @@ const countryDefaultLoader=(countries)=>{
         //creating flag element
         const flagImg = document.createElement('img');
         flagImg.src = country.flags['png'];
-        flagImg.classList.add('h-[55%]','rounded-t-lg');
+        flagImg.classList.add('h-[55%]','rounded-t-lg','w-full');
         
         //creating Common name element then reassign corresponding values
         const h1 = document.createElement('h1');
@@ -111,7 +105,9 @@ const countryDefaultLoader=(countries)=>{
 const searchQuery= () =>{
     const searchValue = document.getElementById('search').value.toLowerCase();
     const countryCards = document.querySelectorAll('.country-card')
-
+    const body = document.querySelector('body')
+    
+    
     if( searchValue === ''){
         return countryDefaultLoader(defaultLoad);
     }
@@ -122,15 +118,34 @@ const searchQuery= () =>{
     Array.from(countryCards).forEach((countryCard) => {
         const countryName =  countryCard.querySelector('h1').textContent.toLowerCase();
         if(countryName.includes(searchValue)) {
-            countryCard.style.display = 'block;'
+            // body.classList.add('grid','grid-rows-[9%_7%_84%]','gap-y-10')
+            countryCard.style.display = 'block';
+            // body.classList.add('grid','gap-y-4')
         } else{
             countryCard.style.display = 'none';
+            
         }
     });
 }
  
 //Filter by region
 // const filterRegion 
+const filterQuery = (event) => {
+    const filterValue = event.target.textContent.toLowerCase();
+    const countryCards = document.querySelectorAll('.country-card');
+
+  
+    Array.from(countryCards).forEach((countryCard) => {
+    //   console.log(flagImg);
+      const regionValue = countryCard.querySelector('.region').textContent.toLowerCase();
+      if (regionValue.includes(filterValue)) {
+        countryCard.style.display = 'block';
+      } else {
+        countryCard.style.display = 'none';
+      }
+    });
+  };
+  
 
 ///GET Req from REST Countries API
 const fetchData = async()=>{
@@ -153,34 +168,27 @@ document.addEventListener("DOMContentLoaded",()=>{
     searchInput.addEventListener("input",searchQuery);
     
     const filterContainer= document.getElementById("filter-items");
-    const filterHandler = document.getElementById("filter-handler");
-    filterHandler.addEventListener('click',()=>{
-        filterContainer.style.display="block";
+    //const filterHandler = document.getElementById("filter-handler");
+    //eventListener to switch between up and down indicators
+    const downIndicator = document.querySelector('#down'); 
+    const upIndicator = document.querySelector('#up');
+    downIndicator.addEventListener('click',(event)=>{
+        event.currentTarget.style.display = "none";
+        upIndicator.style.display = "block";
+        filterContainer.style.display = "block";
+    })
+    
+    upIndicator.addEventListener('click',(event)=>{
+        event.currentTarget.style.display = 'none';
+        downIndicator.style.display = "block";
+        filterContainer.style.display = "none";
+        countryDefaultLoader(defaultLoad);
     })
     
     const filterItems = document.querySelectorAll(".filter-item");
     filterItems.forEach((filterItem)=>{
-        filterItem.addEventListener("click",()=>{
-            // const regionIndex = event.currentTarget.dataset.index;
-            const filterQuery = filterItem.textContent 
-            // console.log("Region Index: " + regionIndex + "Region: " + filterRegion);
-            
-            const countryCards = document.querySelectorAll('.country-card')
-            Array.from(countryCards).forEach((countryCard)=>{
-                const regionValue= countryCard.querySelector('.region').textContent.toLowerCase();
-                if(regionValue.includes(filterQuery)){
-                    countryCard.style.display = 'block';
-                }else{
-                    countryCard.style.display = 'none';
-                }
-                // console.log("Region: " + regionValue)
-                // console.log("Filter: " + filterQuery)
-            })
-        });
+        filterItem.addEventListener("click",filterQuery)
     });
-     /* filterItems.addEventListener('mouseout',(event)=>{
-        filterItems.style.display="none";
-     }) */
 
     fetchData();
 

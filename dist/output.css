@@ -696,6 +696,54 @@ video {
   grid-template-rows: 9% 5% 48%;
 }
 
+.grid-rows-\[\] {
+  grid-template-rows: ;
+}
+
+.grid-rows-\[\(\)\] {
+  grid-template-rows: ();
+}
+
+.grid-rows-\[9\%\] {
+  grid-template-rows: 9%;
+}
+
+.grid-rows-\[9\%_\] {
+  grid-template-rows: 9%;
+}
+
+.grid-rows-\[9\%_7\] {
+  grid-template-rows: 9% 7;
+}
+
+.grid-rows-\[9\%_7\&\] {
+  grid-template-rows: 9% 7&;
+}
+
+.grid-rows-\[9\%_7\%\] {
+  grid-template-rows: 9% 7%;
+}
+
+.grid-rows-\[9\%_7\%_\] {
+  grid-template-rows: 9% 7%;
+}
+
+.grid-rows-\[9\%_7\%_84\%\] {
+  grid-template-rows: 9% 7% 84%;
+}
+
+.grid-rows-\[3\%_1\%_96\%\] {
+  grid-template-rows: 3% 1% 96%;
+}
+
+.grid-rows-\[0\.5\%_1\%_96\%\] {
+  grid-template-rows: 0.5% 1% 96%;
+}
+
+.grid-rows-\[0\.5\%_0\.3\%_96\%\] {
+  grid-template-rows: 0.5% 0.3% 96%;
+}
+
 .flex-row {
   flex-direction: row;
 }
@@ -757,6 +805,10 @@ video {
 
 .gap-y-\[1\.8rem\] {
   row-gap: 1.8rem;
+}
+
+.gap-y-10 {
+  row-gap: 2.5rem;
 }
 
 .rounded-\[0\.3rem\] {
