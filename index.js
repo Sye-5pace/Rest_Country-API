@@ -35,7 +35,7 @@ const countryDefaultLoader=(countries)=>{
         //creating region element then reassign corresponding values
         const h3Region = document.createElement('h3');
         h3Region.innerHTML ="<span class='font-semibold'>Region</span>: " + country.region;
-        h3Region.classList.add('font-geologica','text-[0.9rem]')
+        h3Region.classList.add('font-geologica','text-[0.9rem]','region')
         
         //creating capital element then reassign corresponding values
         const h3Capital = document.createElement('h3');
@@ -130,10 +130,7 @@ const searchQuery= () =>{
 }
  
 //Filter by region
-const filterRegion =(event)=>{
-    const regionIndex = event.currentTarget.dataset.index;
-    console.log("Region Index: " + regionIndex);
-}
+// const filterRegion 
 
 ///GET Req from REST Countries API
 const fetchData = async()=>{
@@ -163,7 +160,23 @@ document.addEventListener("DOMContentLoaded",()=>{
     
     const filterItems = document.querySelectorAll(".filter-item");
     filterItems.forEach((filterItem)=>{
-        filterItem.addEventListener("click",filterRegion);
+        filterItem.addEventListener("click",()=>{
+            // const regionIndex = event.currentTarget.dataset.index;
+            const filterQuery = filterItem.textContent 
+            // console.log("Region Index: " + regionIndex + "Region: " + filterRegion);
+            
+            const countryCards = document.querySelectorAll('.country-card')
+            Array.from(countryCards).forEach((countryCard)=>{
+                const regionValue= countryCard.querySelector('.region').textContent.toLowerCase();
+                if(regionValue.includes(filterQuery)){
+                    countryCard.style.display = 'block';
+                }else{
+                    countryCard.style.display = 'none';
+                }
+                // console.log("Region: " + regionValue)
+                // console.log("Filter: " + filterQuery)
+            })
+        });
     });
      /* filterItems.addEventListener('mouseout',(event)=>{
         filterItems.style.display="none";
