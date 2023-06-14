@@ -27,14 +27,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const language = urlReceiver('redirectLanguage');
         const borders = urlReceiver('redirectNeighbors');
 
-        //mapping border Array elements then create 
+        //mapping border Array elements then create a
         //div into append  
         const neighborArray = borders.split(',');
         neighborArray.forEach(neighbor => {
             const borderContainer = document.getElementById('border-neighbor');
             const neighborContainer = document.createElement('div');
             neighborContainer.textContent = neighbor;
-            neighborContainer.classList.add('w-[17%]','h-[65%]','rounded-[0.3rem]','shadow-xl','shadow-slate-200/50','pl-3','pr-6','self-center','font-geologica','font-semibold','text-gray-700','border-2' ,'border-dashed');
+            neighborContainer.classList.add('w-[20%]','h-[65%]','rounded-[0.3rem]','shadow-xl','shadow-slate-200/50','pl-3','pr-6','self-center','font-geologica','font-semibold','text-gray-700','border-2' ,'border-dashed');
             borderContainer.appendChild(neighborContainer);
         })
         // Array.from(borders).forEach(neighbor => console.log(neighbor))
@@ -50,17 +50,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const previewDetails1 = document.getElementById('preview-details-1');
         const previewNativeName = document.createElement('h3');
-        previewNativeName.innerHTML = "<span class='font-semibold font-geologica'>Native name:</span>" + nativeName;
+        previewNativeName.innerHTML = "<span class='font-semibold font-geologica'>Native name: </span> " + nativeName;
         
         
         const populationH3 = document.createElement('h3');
-        populationH3.innerHTML = "<span class='font-semibold font-geologica'>Population:</span> " + countryPopulation;
+        populationH3.innerHTML = "<span class='font-semibold font-geologica'>Population: </span> " + countryPopulation;
         
         const previewRegion = document.createElement('h3');
-        previewRegion.innerHTML = "<span class='font-semibold font-geologica'>Region:</span> " + countryRegion;
+        previewRegion.innerHTML = "<span class='font-semibold font-geologica'>Region: </span> " + countryRegion;
         
         const previewSubRegion = document.createElement('h3');
-        previewSubRegion.innerHTML = "<span class='font-semibold font-geologica'>Sub Region:</span> " + subRegion;
+        previewSubRegion.innerHTML = "<span class='font-semibold font-geologica'>Sub Region: </span> " + subRegion;
         
         const previewCapital = document.createElement('h3');
         previewCapital.innerHTML = "<span class='font-semibold font-geologica'>Capital: </span> " + capital;
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         previewDetails1.appendChild(previewRegion);
         previewDetails1.appendChild(previewSubRegion);
         previewDetails1.appendChild(previewCapital);
-        previewDetails1.classList.add('font-geologica','text-[1.5rem]','flex','flex-col','gap-y-4');
+        previewDetails1.classList.add('font-geologica','text-[1.3rem]','flex','flex-col','gap-y-2');
 
         const previewDetails2 = document.getElementById('preview-details-2')
         previewDetails2.appendChild(previewTld);

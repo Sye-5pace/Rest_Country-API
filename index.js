@@ -38,7 +38,7 @@ const countryDefaultLoader=(countries)=>{
 
         //creating card-detail container then reassign elements
         const cardDetail = document.createElement('div');
-        cardDetail.classList.add('bg-white','h-[45%]','rounded-b-lg','pl-4','pt-2','flex','flex-col','gap-y-1','.card-detail')
+        cardDetail.classList.add('card-detail','bg-white','h-[45%]','rounded-b-lg','pl-4','pt-2','flex','flex-col','gap-y-1')
         cardDetail.appendChild(h1);
         cardDetail.appendChild(h3Population);
         cardDetail.appendChild(h3Region);
@@ -129,7 +129,6 @@ const searchQuery= () =>{
             // body.classList.add('grid','gap-y-4')
         } else{
             countryCard.style.display = 'none';
-            
         }
     });
 }
@@ -170,9 +169,7 @@ const fetchData = async()=>{
 
 //DOMContentLoaded for the main page
 document.addEventListener("DOMContentLoaded",()=>{
-    //load page will fetch content
-    fetchData();
-
+    
     const searchInput = document.getElementById("search");
     searchInput.addEventListener("input",searchQuery);
     
@@ -199,39 +196,73 @@ document.addEventListener("DOMContentLoaded",()=>{
     filterItems.forEach((filterItem)=>{
         filterItem.addEventListener("click",filterQuery)
     });
-
+    
     //Theme Switcher EventListeners:
     const lightMode = document.querySelector("#light-mode");
     const darkMode = document.querySelector("#dark-mode");
+    const header = document.querySelector("header");
+    const body = document.querySelector("body");
+    const searchContainer = document.querySelector("#search-container");
+    const searchField = document.querySelector("#search");
+    const filterParent = document.querySelector("#filter-container");
+    const countryCards = document.querySelectorAll(".country-card");
+    // const cardDetails = document.querySelectorAll(".card-detail")
+    const filterHandler = document.querySelector('#filter-handler');
+    const regionContainer = document.querySelector('#filter-items');
 
     ///Dark Mode eventlistener
     darkMode.addEventListener("click",(event)=>{
         event.currentTarget.style.display = "none";
         lightMode.style.display = "flex";
-        const header = document.querySelector("header");
-        const body = document.querySelector("body");
-        const searchContainer = document.querySelector("#search-container");
-        const filterContainer = document.querySelector("#filter-container");
-        const countryCards = document.querySelectorAll(".country-card");
-        const countryDetails = document.querySelectorAll(".country-details")
-
-        /* countryCards.forEach((countryCard)=>{
-            countryCard
-        }) */
-        //note to self: how to style shadow in CSS-JS
-
+        
         header.style.backgroundColor = '#2b3642'
         header.style.color = '#fff';
         body.style.backgroundColor = '#212f36'
+        searchContainer.style.backgroundColor = '#2a3643';
+        // searchContainer.style.color = '#fff';
+        filterParent.style.backgroundColor ='#2a3643';
+        filterParent.style.color ='#fff';
+        filterHandler.style.backgroundColor = '#2a3643';
+        filterHandler.style.color = '#fff';
+        regionContainer.style.backgroundColor = '#2a3643';
+        regionContainer.style.color = "#fff";
+        searchField.style.backgroundColor = "#2a3643";
+        searchField.style.color = "#fff";
+        // console.log(cardDetails);
+        countryCards.forEach((countryCard) => {
+            const cardDetails = countryCard.querySelectorAll('.card-detail');
+            console.log(cardDetails);
+            // cardDetail.style.backgroundColor = "#2a3643"
+            // cardDetail.style.color = "#fff" 
+         })
+            // cardDetail.classList.add('bg-[#2a3643]','text-[#fff]');
+            /* 
+        }) */
     });
-
+    
     lightMode.addEventListener("click",(event)=>{
         event.currentTarget.style.display = "none";
         darkMode.style.display = "flex";
+        header.style.backgroundColor = '#fff'
+        header.style.color = '#000';
+        body.style.backgroundColor = '#fafafa'
+        searchContainer.style.backgroundColor = '#fff';
+        searchField.style.backgroundColor = "#fff";
+        searchField.style.color = "#000";
+        filterParent.style.backgroundColor ='#fff';
+        countryCards.forEach((countryCard) => {
+            const cardDetails = countryCard.querySelectorAll('.card-detail');
+            console.log(cardDetails);
+            // cardDetail.style.backgroundColor = "#2a3643"
+            // cardDetail.style.color = "#fff" 
+         })
+        filterHandler.style.backgroundColor = '#fff';
+        filterHandler.style.color = '#000';
+        regionContainer.style.backgroundColor = '#fff';
+        regionContainer.style.color = "#000";
     });
-
-
-
-
-
+    
+    
+    //load page will fetch content
+    fetchData();
 });
