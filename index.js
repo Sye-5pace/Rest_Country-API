@@ -37,25 +37,100 @@ const countryDefaultLoader=(countries)=>{
         h3Capital.classList.add('font-geologica','text-[0.9rem]')
 
         //creating card-detail container then reassign elements
-        const cardDetail = document.createElement('div');
-        cardDetail.classList.add('card-detail','bg-white','h-[45%]','rounded-b-lg','pl-4','pt-2','flex','flex-col','gap-y-1')
-        cardDetail.appendChild(h1);
-        cardDetail.appendChild(h3Population);
-        cardDetail.appendChild(h3Region);
-        cardDetail.appendChild(h3Capital);
+        const detailContainer = document.createElement('div');
+        detailContainer.classList.add('card','bg-white','h-[45%]','rounded-b-lg','pl-4','pt-2','flex','flex-col','gap-y-1')
+        detailContainer.appendChild(h1);
+        detailContainer.appendChild(h3Population);
+        detailContainer.appendChild(h3Region);
+        detailContainer.appendChild(h3Capital);
+        // console.log(detailContainer)
 
         //create country-card 
         const countryCard = document.createElement('div');
         countryCard.appendChild(flagImg);
-        countryCard.appendChild(cardDetail);
-        countryCard.classList.add('flex','flex-col','cursor-pointer','shadow-lg','shadow-slate-200/50','h-[18rem]','country-card');
+        countryCard.appendChild(detailContainer);
+        countryCard.classList.add('flex','flex-col','cursor-pointer','shadow-lg','shadow-slate-200/50','rounded-b-lg','h-[18rem]','country-card');
 
+        //Theme Switcher EventListeners:
+        const lightMode = document.querySelector("#light-mode");
+        const darkMode = document.querySelector("#dark-mode");
+        const header = document.querySelector("header");
+        const body = document.querySelector("body");
+        const searchContainer = document.querySelector("#search-container");
+        const searchField = document.querySelector("#search");
+        const filterParent = document.querySelector("#filter-container");
+        const filterHandler = document.querySelector('#filter-handler');
+        const regionContainer = document.querySelector('#filter-items');
+        const countryCards = document.querySelectorAll('.country-card');
+
+        ///Dark Mode eventlistener
+        darkMode.addEventListener("click",(event)=>{
+            event.currentTarget.style.display = "none";
+            lightMode.style.display = "flex";
+            
+        
+            header.style.backgroundColor = '#2b3642'
+            header.style.boxShadow = '16px 6px 16px rgba(30,44,52,255)';
+            header.style.color = '#fff';
+            body.style.backgroundColor = '#212f36'
+            searchContainer.style.backgroundColor = '#2a3643';
+            searchContainer.style.boxShadow = '16px 6px 16px rgba(30,44,52,255)';
+            // searchContainer.style.color = '#fff';
+            filterParent.style.backgroundColor ='#2a3643';
+            filterParent.style.color ='#fff';
+            filterParent.style.boxShadow = '16px 6px 16px rgba(30,44,52,255)';
+            filterHandler.style.backgroundColor = '#2a3643';
+            filterHandler.style.color = '#fff';
+            regionContainer.style.backgroundColor = '#2a3643';
+            regionContainer.style.boxShadow = '16px 6px 16px rgba(30,44,52,255)';
+            regionContainer.style.color = "#fff";
+            searchField.style.backgroundColor = "#2a3643";
+            searchField.style.color = "#fff";
+            countryCards.forEach((countryCard)=>{
+                countryCard.style.boxShadow = '16px 6px 16px rgba(30,44,52,255)';
+            })
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card) => {
+                card.style.backgroundColor = "#2a3643";
+                card.style.color = "#fff";
+                // card.classList.add("");
+            })
+        });
+    
+        lightMode.addEventListener("click",(event)=>{
+            event.currentTarget.style.display = "none";
+            darkMode.style.display = "flex";
+            header.style.backgroundColor = '#fff'
+            header.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
+            header.style.color = '#000';
+            body.style.backgroundColor = '#fafafa'
+            searchContainer.style.backgroundColor = '#fff';
+            searchContainer.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
+            searchField.style.backgroundColor = "#fff";
+            searchField.style.color = "#000";
+            filterParent.style.backgroundColor ='#fff';
+            filterParent.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
+            filterHandler.style.backgroundColor = '#fff';
+            filterHandler.style.color = '#000';
+            regionContainer.style.backgroundColor = '#fff';
+            regionContainer.style.boxShadow ='0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
+            regionContainer.style.color = "#000";
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card) => {
+                card.style.boxShadow ='0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
+                card.style.backgroundColor = "#fff";
+                card.style.color = "#000";
+            })
+            countryCards.forEach((countryCard)=>{
+                countryCard.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
+            })
+        });
 
         // Set data-index attribute
         countryCard.setAttribute('data-index', index);
 
         //Event handler to pass data through url to preview page
-        countryCard.addEventListener('click',(event,index)=>{
+        countryCard.addEventListener('click',(event)=>{
             const countryIndex = event.currentTarget.dataset.index;
             const nativeNameKey = Object.keys(country.name.nativeName)[0]
             const languagesKey = Object.keys(country.languages)[0]
@@ -74,12 +149,6 @@ const countryDefaultLoader=(countries)=>{
             const countryCurrency = country.currencies[currenciesKey].name
             const countryLanguages = country.languages[languagesKey]
             const borders = country.borders;
-            // console.log(borders)
-
-            /* borders.forEach((bordersItem) => {
-                // console.log(bordersItem)
-            }) */
-
 
             const url = "previewpage.html?" +
              "&redirectFlag=" + encodeURIComponent(countryFlag) +
@@ -93,9 +162,6 @@ const countryDefaultLoader=(countries)=>{
              "&redirectCurrency=" + encodeURIComponent(countryCurrency) +
              "&redirectLanguage=" + encodeURIComponent(countryLanguages) + 
              "&redirectNeighbors=" + encodeURIComponent(borders);
-            //  "&redirectBorders=" + encodeURIComponent(borders);
-
-            //  console.log(url)
             window.location.href = url;
         });
 
@@ -112,7 +178,6 @@ const searchQuery= () =>{
     const searchValue = document.getElementById('search').value.toLowerCase();
     const countryCards = document.querySelectorAll('.country-card')
     const body = document.querySelector('body')
-    
     
     if( searchValue === ''){
         return countryDefaultLoader(defaultLoad);
@@ -169,7 +234,9 @@ const fetchData = async()=>{
 
 //DOMContentLoaded for the main page
 document.addEventListener("DOMContentLoaded",()=>{
-    
+        //load page will fetch content
+        fetchData();
+
     const searchInput = document.getElementById("search");
     searchInput.addEventListener("input",searchQuery);
     
@@ -195,74 +262,5 @@ document.addEventListener("DOMContentLoaded",()=>{
     const filterItems = document.querySelectorAll(".filter-item");
     filterItems.forEach((filterItem)=>{
         filterItem.addEventListener("click",filterQuery)
-    });
-    
-    //Theme Switcher EventListeners:
-    const lightMode = document.querySelector("#light-mode");
-    const darkMode = document.querySelector("#dark-mode");
-    const header = document.querySelector("header");
-    const body = document.querySelector("body");
-    const searchContainer = document.querySelector("#search-container");
-    const searchField = document.querySelector("#search");
-    const filterParent = document.querySelector("#filter-container");
-    const countryCards = document.querySelectorAll(".country-card");
-    // const cardDetails = document.querySelectorAll(".card-detail")
-    const filterHandler = document.querySelector('#filter-handler');
-    const regionContainer = document.querySelector('#filter-items');
-
-    ///Dark Mode eventlistener
-    darkMode.addEventListener("click",(event)=>{
-        event.currentTarget.style.display = "none";
-        lightMode.style.display = "flex";
-        
-        header.style.backgroundColor = '#2b3642'
-        header.style.color = '#fff';
-        body.style.backgroundColor = '#212f36'
-        searchContainer.style.backgroundColor = '#2a3643';
-        // searchContainer.style.color = '#fff';
-        filterParent.style.backgroundColor ='#2a3643';
-        filterParent.style.color ='#fff';
-        filterHandler.style.backgroundColor = '#2a3643';
-        filterHandler.style.color = '#fff';
-        regionContainer.style.backgroundColor = '#2a3643';
-        regionContainer.style.color = "#fff";
-        searchField.style.backgroundColor = "#2a3643";
-        searchField.style.color = "#fff";
-        // console.log(cardDetails);
-        countryCards.forEach((countryCard) => {
-            const cardDetails = countryCard.querySelectorAll('.card-detail');
-            console.log(cardDetails);
-            // cardDetail.style.backgroundColor = "#2a3643"
-            // cardDetail.style.color = "#fff" 
-         })
-            // cardDetail.classList.add('bg-[#2a3643]','text-[#fff]');
-            /* 
-        }) */
-    });
-    
-    lightMode.addEventListener("click",(event)=>{
-        event.currentTarget.style.display = "none";
-        darkMode.style.display = "flex";
-        header.style.backgroundColor = '#fff'
-        header.style.color = '#000';
-        body.style.backgroundColor = '#fafafa'
-        searchContainer.style.backgroundColor = '#fff';
-        searchField.style.backgroundColor = "#fff";
-        searchField.style.color = "#000";
-        filterParent.style.backgroundColor ='#fff';
-        countryCards.forEach((countryCard) => {
-            const cardDetails = countryCard.querySelectorAll('.card-detail');
-            console.log(cardDetails);
-            // cardDetail.style.backgroundColor = "#2a3643"
-            // cardDetail.style.color = "#fff" 
-         })
-        filterHandler.style.backgroundColor = '#fff';
-        filterHandler.style.color = '#000';
-        regionContainer.style.backgroundColor = '#fff';
-        regionContainer.style.color = "#000";
-    });
-    
-    
-    //load page will fetch content
-    fetchData();
+    });    
 });

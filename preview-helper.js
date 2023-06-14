@@ -30,11 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
         //mapping border Array elements then create a
         //div into append  
         const neighborArray = borders.split(',');
+        const borderContainer = document.getElementById('border-neighbor');
+        const neighborContainer = document.createElement('div');
+        neighborContainer.classList.add('neighbor-name','w-[21%]','h-[65%]','rounded-[0.3rem]','shadow-xl','shadow-slate-200/50','pl-3','pr-12','self-center','font-geologica','font-semibold','text-black','border-2' ,'border-dashed');
+        
         neighborArray.forEach(neighbor => {
-            const borderContainer = document.getElementById('border-neighbor');
-            const neighborContainer = document.createElement('div');
             neighborContainer.textContent = neighbor;
-            neighborContainer.classList.add('w-[20%]','h-[65%]','rounded-[0.3rem]','shadow-xl','shadow-slate-200/50','pl-3','pr-6','self-center','font-geologica','font-semibold','text-gray-700','border-2' ,'border-dashed');
             borderContainer.appendChild(neighborContainer);
         })
         // Array.from(borders).forEach(neighbor => console.log(neighbor))
@@ -88,7 +89,67 @@ document.addEventListener('DOMContentLoaded', () => {
         previewDetails2.appendChild(previewLang);
         previewDetails2.classList.add('font-geologica','text-[1.5rem]','flex','flex-col','gap-y-4')
 
+        //theme Switcher for PreviewPage
+        const darkMode = document.querySelector('#dark-mode');
+        const lightMode = document.querySelector("#light-mode");
+        const header = document.querySelector('header');
+        const previewDetail1 = document.querySelector('#preview-details-1')
+        const previewDetail2 = document.querySelector('#preview-details-2')
+        const navBack = document.querySelector('#nav-back');
+        const navTxt = document.querySelector('#nav-text')
+        const navIcon = document.querySelector('#nav-icon')
+        const body = document.querySelector('body');
+        const h1Preview = document.querySelector('#preview-h1');
+        const borderElem = document.querySelector("#border-elem");
+        const neighborName = document.querySelectorAll(".neighbor-name");
 
+        darkMode.addEventListener("click", (event) => {
+            event.currentTarget.style.display = "none";
+            lightMode.style.display = "flex";
+            header.style.backgroundColor = '#2a3643'
+            header.style.color = "#fff"
+            header.style.boxShadow = '16px 6px 16px rgba(30,44,52,255)';
+            navBack.style.backgroundColor = '#2a3643'
+            navBack.style.boxShadow = '10px 6px 16px rgba(30,44,52,255)'
+            navBack.style.color = '#2a3643';
+            navTxt.style.color = '#fff';
+            navIcon.style.color = '#fff';
+            previewDetail1.style.color='#fff';
+            previewDetail2.style.color='#fff';
+            body.style.backgroundColor = '#2a3643'
+            h1Preview.style.color="#fff";
+            borderElem.style.color="#fff";
+            neighborName.forEach((name) => {
+                name.style.color='#fff';
+                name.style.boxShadow = '10px 6px 10px rgba(30,44,52,255)'
+            })
+            
+            
+        })
+        
+        lightMode.addEventListener("click", (event) => {
+            event.currentTarget.style.display = "none"
+            darkMode.style.display = "flex"
+            lightMode.style.display = "none";
+            header.style.backgroundColor = '#fff'
+            header.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
+            header.style.color = "#000"
+            navBack.style.backgroundColor = '#fff'
+            navBack.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
+            navBack.style.color = '#000'
+            navTxt.style.color= '#000'
+            navIcon.style.color = '#000';
+            h1Preview.style.color="#000";
+            previewDetail1.style.color='#000';
+            previewDetail2.style.color='#000';
+            borderElem.style.color="#000";
+            body.style.backgroundColor = '#fafafa'
+            body.style.color = '#000'
+            neighborName.forEach((name) => {
+                name.style.color='#000';
+                name.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
+            })
+        })
 
 
         // console.log(countryFlag);
