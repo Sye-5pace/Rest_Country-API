@@ -73,7 +73,12 @@ const countryDefaultLoader=(countries)=>{
             const countryTld = country.tld['0']
             const countryCurrency = country.currencies[currenciesKey].name
             const countryLanguages = country.languages[languagesKey]
-            const countryNeighbors = country.borders ;
+            const borders = country.borders;
+            // console.log(borders)
+
+            /* borders.forEach((bordersItem) => {
+                // console.log(bordersItem)
+            }) */
 
 
             const url = "previewpage.html?" +
@@ -87,7 +92,8 @@ const countryDefaultLoader=(countries)=>{
              "&redirectTld=" + encodeURIComponent(countryTld) + 
              "&redirectCurrency=" + encodeURIComponent(countryCurrency) +
              "&redirectLanguage=" + encodeURIComponent(countryLanguages) + 
-             "&redirectNeighbors=" + encodeURIComponent(countryNeighbors);
+             "&redirectNeighbors=" + encodeURIComponent(borders);
+            //  "&redirectBorders=" + encodeURIComponent(borders);
 
             //  console.log(url)
             window.location.href = url;

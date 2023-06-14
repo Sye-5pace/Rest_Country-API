@@ -25,7 +25,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const countryTld = urlReceiver('redirectTld');
         const countryCurrency = urlReceiver('redirectCurrency');
         const language = urlReceiver('redirectLanguage');
-        //Passing countryNeighbors missed take notice?
+        const borders = urlReceiver('redirectNeighbors');
+
+        //mapping border Array elements then create 
+        //div into append  
+        const neighborArray = borders.split(',');
+        neighborArray.forEach(neighbor => {
+            const borderContainer = document.getElementById('border-neighbor');
+            const neighborContainer = document.createElement('div');
+            neighborContainer.textContent = neighbor;
+            neighborContainer.classList.add('w-[17%]','h-[65%]','rounded-[0.3rem]','shadow-xl','shadow-slate-200/50','pl-3','pr-6','self-center','font-geologica','font-semibold','text-gray-700','border-2' ,'border-dashed');
+            borderContainer.appendChild(neighborContainer);
+        })
+        // Array.from(borders).forEach(neighbor => console.log(neighbor))
 
         const flagContainer = document.getElementById('flag-container');
         const flagImg = document.createElement('img');
