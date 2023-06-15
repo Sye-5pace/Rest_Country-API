@@ -1,6 +1,5 @@
 const countriesEndpoint = 'https://restcountries.com/v3.1/all';
 
-
 //default function to load REST Country Data
 let defaultLoad ;
 const countryDefaultLoader=(countries)=>{
@@ -50,92 +49,8 @@ const countryDefaultLoader=(countries)=>{
         countryCard.appendChild(flagImg);
         countryCard.appendChild(detailContainer);
         countryCard.classList.add('flex','flex-col','cursor-pointer','shadow-lg','shadow-slate-200/50','rounded-b-lg','h-[18rem]','country-card');
-
-        //Theme Switcher EventListeners:
-        const lightMode = document.querySelector("#light-mode");
-        const darkMode = document.querySelector("#dark-mode");
-        const header = document.querySelector("header");
-        const body = document.querySelector("body");
-        const searchContainer = document.querySelector("#search-container");
-        const searchField = document.querySelector("#search");
-        const filterParent = document.querySelector("#filter-container");
-        const filterHandler = document.querySelector('#filter-handler');
-        const regionContainer = document.querySelector('#filter-items');
-        const countryCards = document.querySelectorAll('.country-card');
-        // Function to save the current theme in localStorage
-        const saveTheme = (darkModeEnabled) => {
-            localStorage.setItem('darkModeEnabled', darkModeEnabled);
-        }
-        
-        // Function to load the theme from localStorage
-        const loadTheme = () => {
-            const darkModeEnabled = localStorage.getItem('darkModeEnabled') === 'true';
-            toggleTheme(darkModeEnabled);
-        }
-        ///Dark Mode eventlistener
-        darkMode.addEventListener("click",(event)=>{
-            event.currentTarget.style.display = "none";
-            lightMode.style.display = "flex";
-            
-        
-            header.style.backgroundColor = '#2b3642'
-            header.style.boxShadow = '16px 6px 16px rgba(30,44,52,255)';
-            header.style.color = '#fff';
-            body.style.backgroundColor = '#212f36'
-            searchContainer.style.backgroundColor = '#2a3643';
-            searchContainer.style.boxShadow = '16px 6px 16px rgba(30,44,52,255)';
-            // searchContainer.style.color = '#fff';
-            filterParent.style.backgroundColor ='#2a3643';
-            filterParent.style.color ='#fff';
-            filterParent.style.boxShadow = '16px 6px 16px rgba(30,44,52,255)';
-            filterHandler.style.backgroundColor = '#2a3643';
-            filterHandler.style.color = '#fff';
-            regionContainer.style.backgroundColor = '#2a3643';
-            regionContainer.style.boxShadow = '16px 6px 16px rgba(30,44,52,255)';
-            regionContainer.style.color = "#fff";
-            searchField.style.backgroundColor = "#2a3643";
-            searchField.style.color = "#fff";
-            countryCards.forEach((countryCard)=>{
-                countryCard.style.boxShadow = '16px 6px 16px rgba(30,44,52,255)';
-            })
-            const cards = document.querySelectorAll('.card');
-            cards.forEach((card) => {
-                card.style.backgroundColor = "#2a3643";
-                card.style.color = "#fff";
-                // card.classList.add("");
-            })
-            saveTheme(true);
-        });
-    
-        lightMode.addEventListener("click",(event)=>{
-            event.currentTarget.style.display = "none";
-            darkMode.style.display = "flex";
-            header.style.backgroundColor = '#fff'
-            header.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
-            header.style.color = '#000';
-            body.style.backgroundColor = '#fafafa'
-            searchContainer.style.backgroundColor = '#fff';
-            searchContainer.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
-            searchField.style.backgroundColor = "#fff";
-            searchField.style.color = "#000";
-            filterParent.style.backgroundColor ='#fff';
-            filterParent.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
-            filterHandler.style.backgroundColor = '#fff';
-            filterHandler.style.color = '#000';
-            regionContainer.style.backgroundColor = '#fff';
-            regionContainer.style.boxShadow ='0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
-            regionContainer.style.color = "#000";
-            const cards = document.querySelectorAll('.card');
-            cards.forEach((card) => {
-                card.style.boxShadow ='0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
-                card.style.backgroundColor = "#fff";
-                card.style.color = "#000";
-            })
-            countryCards.forEach((countryCard)=>{
-                countryCard.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
-            })
-            saveTheme(false);
-        });
+        // const card = document.querySelector('.card');
+        // toggleTheme(countryCard,card)
         
         // Set data-index attribute
         countryCard.setAttribute('data-index', index);
@@ -185,7 +100,7 @@ const countryDefaultLoader=(countries)=>{
 const searchQuery= () =>{
     const searchValue = document.getElementById('search').value.toLowerCase();
     const countryCards = document.querySelectorAll('.country-card')
-    const body = document.querySelector('body')
+    // const body = document.querySelector('body')
     
     if( searchValue === ''){
         return countryDefaultLoader(defaultLoad);
@@ -244,17 +159,110 @@ const fetchData = async()=>{
 document.addEventListener("DOMContentLoaded",()=>{
     //load page will fetch content
     fetchData();
-    // loadTheme();
     
+    //Theme Switcher EventListeners:
+// Function to save the current theme in localStorage
+    const saveTheme = (darkModeEnabled) => {
+        localStorage.setItem('darkModeEnabled', darkModeEnabled);
+    }
+// Function to load the theme from localStorage
+    const loadTheme = () => {
+        const darkModeEnabled = localStorage.getItem('darkModeEnabled') === 'true';
+        toggleTheme(darkModeEnabled);
+    }
+
+// Function to toggle the theme
+    const toggleTheme = (darkModeEnabled,countryCards) => {
+        
+        const lightMode = document.querySelector("#light-mode");
+        const darkMode = document.querySelector("#dark-mode");
+        const header = document.querySelector("header");
+        const body = document.querySelector("body");
+        const searchContainer = document.querySelector("#search-container");
+        const searchField = document.querySelector("#search");
+        const filterParent = document.querySelector("#filter-container");
+        const filterHandler = document.querySelector('#filter-handler');
+        const regionContainer = document.querySelector('#filter-items');
+        // const countryCards = document.querySelectorAll('.country-card');
+        const paginationSection = document.querySelector('#pagination');
+        console.log(countryCards);
+        if (darkModeEnabled) {
+            darkMode.style.display = "none";
+            lightMode.style.display = "flex";
+            paginationSection.style.color = '#fff';
+            header.style.backgroundColor = '#2b3642';
+            header.style.boxShadow = '16px 6px 16px rgba(30, 44, 52, 255)';
+            header.style.color = '#fff';
+            body.style.backgroundColor = '#212f36';
+            searchContainer.style.backgroundColor = '#2a3643';
+            searchContainer.style.boxShadow = '16px 6px 16px rgba(30, 44, 52, 255)';
+            filterParent.style.backgroundColor = '#2a3643';
+            filterParent.style.color = '#fff';
+            filterParent.style.boxShadow = '16px 6px 16px rgba(30, 44, 52, 255)';
+            filterHandler.style.backgroundColor = '#2a3643';
+            filterHandler.style.color = '#fff';
+            regionContainer.style.backgroundColor = '#2a3643';
+            regionContainer.style.boxShadow = '16px 6px 16px rgba(30, 44, 52, 255)';
+            regionContainer.style.color = "#fff";
+            searchField.style.backgroundColor = "#2a3643";
+            searchField.style.color = "#fff";
+            // countryCard.style.boxShadow = '16px 6px 16px rgba(30, 44, 52, 255)';
+            // card.style.backgroundColor = "#2a3643";
+            // card.style.color = "#fff";
+            saveTheme(true);
+        } else {
+            lightMode.style.display = "none";
+            darkMode.style.display = "flex";
+            header.style.backgroundColor = '#fff';
+            header.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
+            header.style.color = '#000';
+            paginationSection.style.color = '#000';
+            body.style.backgroundColor = '#fafafa';
+            searchContainer.style.backgroundColor = '#fff';
+            searchContainer.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
+            filterParent.style.backgroundColor = '#fff';
+            filterParent.style.color = '#000';
+            filterParent.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
+            filterHandler.style.backgroundColor = '#fff';
+            filterHandler.style.color = '#000';
+            regionContainer.style.backgroundColor = '#fff';
+            regionContainer.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
+            regionContainer.style.color = '#000';
+            searchField.style.backgroundColor = '#fff';
+            searchField.style.color = '#000';
+            countryCard.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
+            card.style.backgroundColor = '#fff';
+            card.style.color = '#000';
+            saveTheme(false);
+        }
+    }
+
+    // Theme Switcher EventListeners:
+    const darkMode = document.querySelector("#dark-mode");
+    const lightMode = document.querySelector("#light-mode");
+
+    ///Dark Mode eventlistener
+    darkMode.addEventListener("click", () => {
+        toggleTheme(true);
+    });
+
+    //Light Mode eventlistener
+    lightMode.addEventListener("click", () => {
+        toggleTheme(false);
+    });
+
+    // Load the theme when the page is loaded
+    loadTheme();
+
     const searchInput = document.getElementById("search");
     searchInput.addEventListener("input",searchQuery);
     
     const filterContainer= document.getElementById("filter-items");
-    //const filterHandler = document.getElementById("filter-handler");
+
     //eventListener to switch between up and down indicators
     const downIndicator = document.querySelector('#down'); 
     const upIndicator = document.querySelector('#up');
-    downIndicator.addEventListener('click',(event)=>{
+    downIndicator.addEventListener(' ',(event)=>{
         event.currentTarget.style.display = "none";
         upIndicator.style.display = "block";
         filterContainer.style.display = "block";
@@ -271,5 +279,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     const filterItems = document.querySelectorAll(".filter-item");
     filterItems.forEach((filterItem)=>{
         filterItem.addEventListener("click",filterQuery)
-    });    
+    });   
+
 });
