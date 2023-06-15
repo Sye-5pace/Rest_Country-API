@@ -62,7 +62,16 @@ const countryDefaultLoader=(countries)=>{
         const filterHandler = document.querySelector('#filter-handler');
         const regionContainer = document.querySelector('#filter-items');
         const countryCards = document.querySelectorAll('.country-card');
-
+        // Function to save the current theme in localStorage
+        const saveTheme = (darkModeEnabled) => {
+            localStorage.setItem('darkModeEnabled', darkModeEnabled);
+        }
+        
+        // Function to load the theme from localStorage
+        const loadTheme = () => {
+            const darkModeEnabled = localStorage.getItem('darkModeEnabled') === 'true';
+            toggleTheme(darkModeEnabled);
+        }
         ///Dark Mode eventlistener
         darkMode.addEventListener("click",(event)=>{
             event.currentTarget.style.display = "none";
@@ -95,6 +104,7 @@ const countryDefaultLoader=(countries)=>{
                 card.style.color = "#fff";
                 // card.classList.add("");
             })
+            saveTheme(true);
         });
     
         lightMode.addEventListener("click",(event)=>{
@@ -124,20 +134,18 @@ const countryDefaultLoader=(countries)=>{
             countryCards.forEach((countryCard)=>{
                 countryCard.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
             })
+            saveTheme(false);
         });
-
+        
         // Set data-index attribute
         countryCard.setAttribute('data-index', index);
-
+        
         //Event handler to pass data through url to preview page
         countryCard.addEventListener('click',(event)=>{
             const countryIndex = event.currentTarget.dataset.index;
             const nativeNameKey = Object.keys(country.name.nativeName)[0]
             const languagesKey = Object.keys(country.languages)[0]
             const currenciesKey = Object.keys(country.currencies)[0]
-            
-
-            
             const countryFlag = country.flags.png
             const countryName = country.name['common']
             const nativeName = country.name.nativeName[nativeNameKey].common
@@ -151,8 +159,8 @@ const countryDefaultLoader=(countries)=>{
             const borders = country.borders;
 
             const url = "previewpage.html?" +
-             "&redirectFlag=" + encodeURIComponent(countryFlag) +
-             "&redirectName=" + encodeURIComponent(countryName) +
+            "&redirectFlag=" + encodeURIComponent(countryFlag) +
+            "&redirectName=" + encodeURIComponent(countryName) +
              "&redirectNativeName=" + encodeURIComponent(nativeName) +
              "&redirectPopulation=" + encodeURIComponent(population) +
              "&redirectRegion=" + encodeURIComponent(countryRegion) +
@@ -162,9 +170,9 @@ const countryDefaultLoader=(countries)=>{
              "&redirectCurrency=" + encodeURIComponent(countryCurrency) +
              "&redirectLanguage=" + encodeURIComponent(countryLanguages) + 
              "&redirectNeighbors=" + encodeURIComponent(borders);
-            window.location.href = url;
+             window.location.href = url;
         });
-
+        
         const countryContainer = document.getElementById('country-container')
         countryContainer.appendChild(countryCard);
     })
@@ -197,25 +205,25 @@ const searchQuery= () =>{
         }
     });
 }
- 
+
 //Filter by region
 // const filterRegion 
 const filterQuery = (event) => {
     const filterValue = event.target.textContent.toLowerCase();
     const countryCards = document.querySelectorAll('.country-card');
-
-  
+    
+    
     Array.from(countryCards).forEach((countryCard) => {
-    //   console.log(flagImg);
-      const regionValue = countryCard.querySelector('.region').textContent.toLowerCase();
-      if (regionValue.includes(filterValue)) {
-        countryCard.style.display = 'block';
-      } else {
-        countryCard.style.display = 'none';
-      }
+        //   console.log(flagImg);
+        const regionValue = countryCard.querySelector('.region').textContent.toLowerCase();
+        if (regionValue.includes(filterValue)) {
+            countryCard.style.display = 'block';
+        } else {
+            countryCard.style.display = 'none';
+        }
     });
-  };
-  
+};
+
 
 ///GET Req from REST Countries API
 const fetchData = async()=>{
@@ -234,9 +242,10 @@ const fetchData = async()=>{
 
 //DOMContentLoaded for the main page
 document.addEventListener("DOMContentLoaded",()=>{
-        //load page will fetch content
-        fetchData();
-
+    //load page will fetch content
+    fetchData();
+    // loadTheme();
+    
     const searchInput = document.getElementById("search");
     searchInput.addEventListener("input",searchQuery);
     
