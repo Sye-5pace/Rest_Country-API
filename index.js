@@ -126,9 +126,9 @@ const paginationActiveStates =(page)=>{
     const paginationCounts = document.querySelectorAll('#pagination li')
     paginationCounts.forEach((item)=>{
         if(item.dataset.index === page){
-            item.classList.add('active');
+            item.classList.add('active','border-2');
         }else{
-            item.classList.remove('active');
+            item.classList.remove('active','border-2');
         }
     });
 }
