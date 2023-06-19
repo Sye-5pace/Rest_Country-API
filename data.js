@@ -69,15 +69,12 @@ export const showPage =(page)=>{
         detailContainer.appendChild(h3Population);
         detailContainer.appendChild(h3Region);
         detailContainer.appendChild(h3Capital);
-        // console.log(detailContainer)
 
         //create country-card 
         const countryCard = document.createElement('div');
         countryCard.appendChild(flagImg);
         countryCard.appendChild(detailContainer);
-        countryCard.classList.add('flex','flex-col','cursor-pointer','shadow-md','shadow-slate-200/50','rounded-b-lg','h-[18rem]','country-card');
-        // const card = document.querySelector('.card');
-        // toggleTheme(countryCard,card)
+        countryCard.classList.add('flex','flex-col','cursor-pointer','shadow-md','shadow-slate-200/50','rounded-b-lg','h-[18rem]','mobile:h-[25rem]','country-card');
         
         // Set data-index attribute
         countryCard.setAttribute('data-index', index);

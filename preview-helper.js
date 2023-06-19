@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const neighborArray = borders.split(',');
         const borderContainer = document.getElementById('border-neighbor');
         const neighborContainer = document.createElement('div');
-        neighborContainer.classList.add('neighbor-name','w-[21%]','h-[65%]','rounded-[0.3rem]','shadow-xl','shadow-slate-200/50','pl-3','pr-12','self-center','font-geologica','font-semibold','text-black','border-2' ,'border-dashed');
+        neighborContainer.classList.add('neighbor-name','w-[22%]','h-[65%]','rounded-[0.3rem]','shadow-xl','shadow-slate-200/50','pl-3','pr-12','self-center','font-geologica','font-semibold','text-black','border-2' ,'border-dashed');
         
         neighborArray.forEach(neighbor => {
             neighborContainer.textContent = neighbor;
@@ -81,13 +81,13 @@ document.addEventListener('DOMContentLoaded', () => {
         previewDetails1.appendChild(previewRegion);
         previewDetails1.appendChild(previewSubRegion);
         previewDetails1.appendChild(previewCapital);
-        previewDetails1.classList.add('font-geologica','text-[1.3rem]','flex','flex-col','gap-y-2');
+        previewDetails1.classList.add('font-geologica','text-[1.3rem]','flex','flex-col','gap-y-2','mobile:text-[1.2rem]');
 
         const previewDetails2 = document.getElementById('preview-details-2')
         previewDetails2.appendChild(previewTld);
         previewDetails2.appendChild(previewCurrency);
         previewDetails2.appendChild(previewLang);
-        previewDetails2.classList.add('font-geologica','text-[1.5rem]','flex','flex-col','gap-y-4')
+        previewDetails2.classList.add('font-geologica','text-[1.5rem]','flex','flex-col','gap-y-4','mobile:text-[1.2rem]')
 
         //theme Switcher for PreviewPage
         const toggleTheme = (darkModeEnabled) => {
