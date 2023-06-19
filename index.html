@@ -10,7 +10,7 @@
     <title>Rest Country API</title>
   </head>
   <body class="bg-[#fafafa] w-full min-h-screen border-box m-0 p-0 grid  gap-y-8">
-    <header class="bg-white shadow-lg shadow-slate-200/50 flex flex-row justify-between items-center px-[5rem] py-4 w-full">
+    <header class="bg-white shadow-lg shadow-slate-200/50 flex flex-row justify-between items-center px-[5rem] py-4 laptop:w-full tablet:w-full">
       <h1 class="font-geologica font-bold text-[1.3rem] ">Where in the world?</h1>
       <div class="flex flex-row ">
         <div id="dark-mode" class="flex flex-row items-center gap-4">
@@ -27,8 +27,8 @@
         </div>
       </div>
     </header>
-    <section class=" mx-[5rem] flex flex-row justify-between mobile:flex-col">
-      <div id="search-container" class="bg-white flex flex-row gap-6  items-center font-semibold pl-7 w-[37%] shadow-lg shadow-slate-200/50">
+    <section class=" mx-[5rem] flex flex-row justify-between tablet:flex-col tablet:gap-y-4 mobile:flex-col mobile:gap-y-6">
+      <div id="search-container" class="bg-white flex flex-row gap-6 p-3 items-center font-semibold pl-7 laptop:w-[37%] shadow-lg tablet:w-[35%] mobile:w-[35%] shadow-slate-200/50">
         <label for="search">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.3" stroke="currentColor" class="w-6 h-6 stroke-gray-400">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
@@ -36,54 +36,48 @@
         </label>
         <input id="search" type="text" placeholder="Search for a country" class="focus:outline-none w-[18rem] "/>
       </div>
-      <div id="pagination"  class="text-[#000] children:cursor-pointer  flex flex-row w-[36%] items-center self-center gap-[0.8rem]  children:list-none font-geologica">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 bg-red-400">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-        </svg>
-        <li data-index="1" class="hover:border-2 hover:border-solid">1</li>
-        <li data-index="2" class="hover:border-2 hover:border-solid">2</li>
-        <li data-index="3" class="hover:border-2 hover:border-solid">3</li>
-        <li data-index="4" class="hover:border-2 hover:border-solid">4</li>
-        <li data-index="5" class="hover:border-2 hover:border-solid">5</li>
-        <li data-index="6" class="hover:border-2 hover:border-solid">6</li>
-        <li data-index="7" class="hover:border-2 hover:border-solid">7</li>
-        <li data-index="8" class="hover:border-2 hover:border-solid">8</li>
-        <li data-index="9" class="hover:border-2 hover:border-solid">9</li>
-        <li data-index="10" class="hover:border-2 hover:border-solid">10</li>
-        <li data-index="11" class="hover:border-2 hover:border-solid">11</li>
-        <li data-index="12" class="hover:border-2 hover:border-solid">12</li>
-        <li data-index="13" class="hover:border-2 hover:border-solid">13</li>
-        <li data-index="14" class="hover:border-2 hover:border-solid">14</li>
-        <li data-index="15" class="hover:border-2 hover:border-solid">15</li>
-        <li data-index="16" class="hover:border-2 hover:border-solid">16</li>
-        <li data-index="17" class="hover:border-2 hover:border-solid">17</li>
-        <li data-index="18" class="hover:border-2 hover:border-solid">18</li>
-        <li data-index="19" class="hover:border-2 hover:border-solid">19</li>
-        <li data-index="20" class="hover:border-2 hover:border-solid">20</li>
-        <li data-index="21" class="hover:border-2 hover:border-solid">21</li>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-        </svg>        
+      <div id="pagination"  class="tablet:order-3 mobile:order-3 mobile:w-full tablet:w-full text-[#000] tablet:pl-6 children:cursor-pointer  flex flex-row w-[40%] items-center  gap-[0.3rem]  children:list-none font-geologica">
+        <li data-index="1" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">1</li>
+        <li data-index="2" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">2</li>
+        <li data-index="3" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">3</li>
+        <li data-index="4" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">4</li>
+        <li data-index="5" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">5</li>
+        <li data-index="6" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">6</li>
+        <li data-index="7" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">7</li>
+        <li data-index="8" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">8</li>
+        <li data-index="9" class="w-8 text-center bg-white hover:border-2 hover:border-solid text-[0.9rem] px-1">9</li>
+        <li data-index="10" class="w-8 text-center bg-white hover:border-2 hover:border-solid text-[0.9rem] px-1">10</li>
+        <li data-index="11" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">11</li>
+        <li data-index="12" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">12</li>
+        <li data-index="13" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">13</li>
+        <li data-index="14" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">14</li>
+        <li data-index="15" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">15</li>
+        <li data-index="16" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">16</li>
+        <li data-index="17" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">17</li>
+        <li data-index="18" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">18</li>
+        <li data-index="19" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">19</li>
+        <li data-index="20" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">20</li>
+        <li data-index="21" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">21</li>
       </div>
-      <div  id="filter-container" class="bg-white flex flex-col justify-between items-center font-normal font-geologica w-[13%] p-3 shadow-lg shadow-slate-200/50">
-        <div id="filter-handler" class="flex flex-row items-center gap-2 cursor-pointer my-atuo">
+      <div  id="filter-container" class="bg-white flex flex-col justify-between items-center font-normal font-geologica laptop:w-[13%] tablet:w-[35%] mobile:w-[35%] p-3 shadow-lg shadow-slate-200/50">
+        <div id="filter-handler" class="flex flex-row items-center gap-2 my-auto cursor-pointer">
           Filter by Region
-          <svg id="down" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+          <svg id="down" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-4">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
           </svg>
-          <svg id="up" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden w-4 h-4">
+          <svg id="up" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden w-6 h-4">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
           </svg>          
         </div>
       </div>
-      <div id="filter-items"  class="absolute hidden ml-[77.8%] mt-[4%] w-[11.4%] p-2 bg-white flex flex-col gap-6 font-semibold pl-7 shadow-lg shadow-slate-200/50">
+      <div id="filter-items"  class="absolute hidden laptop:ml-[77.8%] laptop:mt-[4%] tablet:mt-[15%]  tablet:pl-16 tablet:w-[36%] mobile:w-[63%] mobile:mt-[30%] laptop:w-[11.4%] p-2 bg-white flex flex-col laptop:gap-6 font-semibold laptop:pl-7 shadow-lg shadow-slate-200/50">
         <p data-index="1" class="cursor-pointer filter-item">Africa</p>
         <p data-index="2" class="cursor-pointer filter-item">Americas</p>
         <p data-index="3" class="cursor-pointer filter-item">Asia</p>
         <p data-index="4" class="cursor-pointer filter-item">Europe</p>
       </div>
     </section>
-    <main id="country-container" class=" mb-[0.8rem] mx-[5rem] grid grid-cols-4 mobile:grid-cols-1 gap-y-[1.8rem] gap-x-14">
+    <main id="country-container" class=" mb-[0.8rem] mx-[5rem] grid grid-cols-4 tablet:grid-cols-2 mobile:grid-cols-1 mobile:gap-y-4 gap-y-[1.8rem] gap-x-14">
     </main>
     <script type="module" src="./index.js"></script>
     <script type="module" src="./data.js"></script>
