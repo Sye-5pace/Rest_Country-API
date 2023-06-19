@@ -21,9 +21,7 @@ export const toggleTheme = (darkModeEnabled) => {
     const filterParent = document.querySelector("#filter-container");
     const filterHandler = document.querySelector('#filter-handler');
     const regionContainer = document.querySelector('#filter-items');
-    const paginationSection = document.querySelector('#pagination');
-    // const card = countryCard.querySelector('.card')
-    // console.log(card)
+    const paginationSection = document.querySelector('#pagination')
     if (darkModeEnabled) {
         darkMode.style.display = "none";
         lightMode.style.display = "flex";
@@ -44,9 +42,6 @@ export const toggleTheme = (darkModeEnabled) => {
         regionContainer.style.color = "#fff";
         searchField.style.backgroundColor = "#2a3643";
         searchField.style.color = "#fff";
-        // countryCard.style.boxShadow = '16px 6px 16px rgba(30, 44, 52, 255)';
-        /* card.style.backgroundColor = "#2a3643";
-        card.style.color = "#fff"; */
         saveTheme(true);
     } else {
         lightMode.style.display = "none";
@@ -68,9 +63,6 @@ export const toggleTheme = (darkModeEnabled) => {
         regionContainer.style.color = '#000';
         searchField.style.backgroundColor = '#fff';
         searchField.style.color = '#000';
-        // countryCard.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
-        // card.style.backgroundColor = '#fff';
-        // card.style.color = '#000';
         saveTheme(false);
     }
 }
