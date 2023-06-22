@@ -21,14 +21,14 @@ export const toggleTheme = (darkModeEnabled) => {
     const filterParent = document.querySelector("#filter-container");
     const filterHandler = document.querySelector('#filter-handler');
     const regionContainer = document.querySelector('#filter-items');
-    const paginationSection = document.querySelectorAll('#pagination li');
+    // const paginationSection = document.querySelectorAll('#pagination li');
     if (darkModeEnabled) {
         darkMode.style.display = "none";
         lightMode.style.display = "flex";
-        paginationSection.forEach((item)=>{
+        /* paginationSection.forEach((item)=>{
             item.style.backgroundColor = '#2b3642';
             item.style.color = '#fff';
-        })
+        }) */
         header.style.backgroundColor = '#2b3642';
         header.style.boxShadow = '16px 6px 16px rgba(30, 44, 52, 255)';
         header.style.color = '#fff';
@@ -52,10 +52,10 @@ export const toggleTheme = (darkModeEnabled) => {
         header.style.backgroundColor = '#fff';
         header.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
         header.style.color = '#000';
-        paginationSection.forEach((item)=>{
+        /* paginationSection.forEach((item)=>{
             item.style.backgroundColor = '#fff';
             item.style.color = '#000';
-        })
+        }) */
         body.style.backgroundColor = '#fafafa';
         searchContainer.style.backgroundColor = '#fff';
         searchContainer.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';

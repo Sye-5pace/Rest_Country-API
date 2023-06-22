@@ -1,10 +1,11 @@
-import { toggleTheme} from './theme_switcher.js'
+// import { toggleTheme} from './theme_switcher.js'
 
 const countriesEndpoint = 'https://restcountries.com/v3.1/all';
 
 let defaultLoad;
 let currentPage = 1;
 const itemsPerPage = 12;
+
 
 ///GET Req from REST Countries API
 export const fetchData = async()=>{
@@ -15,7 +16,7 @@ export const fetchData = async()=>{
         }
         const countries = await response.json();
         countryDefaultLoader(countries);
-        console.log(countries)
+        // console.log(countries)
     }catch(error){
         console.log(error);
     }
@@ -23,18 +24,56 @@ export const fetchData = async()=>{
 
 //defaultLoad()
 export const countryDefaultLoader = (countries) => {
-defaultLoad = countries;
+    defaultLoad = countries;
     showPage(currentPage);
+
+    const backButton = document.querySelector("#prev");
+    backButton.addEventListener("click", () => {
+        if (currentPage > 1) {
+            currentPage--;
+            showPage(currentPage);
+            paginationActiveStates(currentPage)
+        }
+    });
+
+  // Next button event listener
+  const nextButton = document.querySelector("#next");
+  nextButton.addEventListener("click", () => {
+    const totalPages = Math.ceil(defaultLoad.length / itemsPerPage);
+    if (currentPage < totalPages) {
+        currentPage++;
+        showPage(currentPage);
+        paginationActiveStates(currentPage)
+    }
+  });
+//   updatePaginationButtons();
 }
+
 
 export const showPage =(page)=>{
     const countryContainer = document.getElementById('country-container');
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const countrySubset = defaultLoad.slice(startIndex, endIndex);
+    const backButton = document.querySelector("#prev");
+    const nextButton = document.querySelector("#next");
+    const totalPages = Math.ceil(defaultLoad.length / itemsPerPage);
 
+
+    if (page === 1) {
+        backButton.classList.add("opacity-50","pointer-events-none");
+      } else {
+        backButton.classList.remove("opacity-50","pointer-events-none");
+      }
+    
+      if (page === totalPages) {
+        nextButton.classList.add("opacity-50","pointer-events-none");
+      } else {
+        nextButton.classList.remove("opacity-50","pointer-events-none");
+      }
+    
     countryContainer.innerHTML = '';                
-
+    
     countrySubset.forEach((country,index)=> {
         //creating flag element
         const flagImg = document.createElement('img');
@@ -45,13 +84,13 @@ export const showPage =(page)=>{
         const h1 = document.createElement('h1');
         h1.textContent = country.name['common'];
         h1.classList.add('font-geologica','font-bold', 'text-[1.2rem]','leading-[1rem]','my-1');
-
+        
         
         //creating population element then reassign corresponding values
         const h3Population = document.createElement('h3');
         h3Population.innerHTML = "<span class='font-semibold'>Population</span>: " + country.population;
         h3Population.classList.add('font-geologica','text-[0.9rem]');
-
+        
         //creating region element then reassign corresponding values
         const h3Region = document.createElement('h3');
         h3Region.innerHTML ="<span class='font-semibold'>Region</span>: " + country.region;
@@ -69,7 +108,7 @@ export const showPage =(page)=>{
         detailContainer.appendChild(h3Population);
         detailContainer.appendChild(h3Region);
         detailContainer.appendChild(h3Capital);
-
+        
         //create country-card 
         const countryCard = document.createElement('div');
         countryCard.appendChild(flagImg);
@@ -119,12 +158,12 @@ export const showPage =(page)=>{
     paginationActiveStates(page)
 };
 
-//Pagination Functions:
+
 //Active page indicator
 export const paginationActiveStates =(page)=>{
     const paginationCounts = document.querySelectorAll('#pagination li')
     paginationCounts.forEach((item)=>{
-        if(item.dataset.index === page){
+        if(item.dataset.index === page.toString()){
             item.classList.add('active','border-2', 'shadow-lg','text-[1.2rem]');
         }else{
             item.classList.remove('active','border-2','shadow-lg','text-[1.2rem]');

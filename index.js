@@ -6,7 +6,7 @@ import { loadTheme,toggleTheme } from './theme_switcher.js';
 //DOMContentLoaded for the main page
 document.addEventListener("DOMContentLoaded",()=>{
     fetchData();
-    
+    // console.log(defaultLoad)
     // Load the theme when the page is loaded
     loadTheme();
 
@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     filterItems.forEach((filterItem)=>{
         filterItem.addEventListener("click",filterQuery)
     });   
+
     
     
 });

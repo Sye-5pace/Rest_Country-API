@@ -37,6 +37,9 @@
         <input id="search" type="text" placeholder="Search for a country" class="focus:outline-none w-[18rem] "/>
       </div>
       <div id="pagination"  class="tablet:order-3 mobile:order-3 mobile:w-full tablet:w-full text-[#000] tablet:pl-6 children:cursor-pointer  flex flex-row w-[40%] items-center  gap-[0.3rem]  children:list-none font-geologica">
+        <svg id="prev" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 hover:border-2 hover:border-[#c7c7c7] stroke-[#d6d6d6]">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
         <li data-index="1" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">1</li>
         <li data-index="2" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">2</li>
         <li data-index="3" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">3</li>
@@ -58,9 +61,12 @@
         <li data-index="19" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">19</li>
         <li data-index="20" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">20</li>
         <li data-index="21" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid">21</li>
+        <svg id="next" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 hover:border-2 hover:border-[#c7c7c7] stroke-[#d6d6d6]">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>        
       </div>
       <div  id="filter-container" class="bg-white flex flex-col justify-between items-center font-normal font-geologica laptop:w-[13%] tablet:w-[35%] mobile:w-[35%] p-3 shadow-lg shadow-slate-200/50">
-        <div id="filter-handler" class="flex flex-row items-center gap-2 my-auto cursor-pointer">
+        <div id="filter-handler" class="flex flex-row items-center gap-2 my-2 cursor-pointer #fff">
           Filter by Region
           <svg id="down" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-4">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
