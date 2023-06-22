@@ -22,7 +22,7 @@ export const fetchData = async()=>{
     }
 }
 
-//defaultLoad()
+
 export const countryDefaultLoader = (countries) => {
     defaultLoad = countries;
     showPage(currentPage);
@@ -46,7 +46,6 @@ export const countryDefaultLoader = (countries) => {
         paginationActiveStates(currentPage)
     }
   });
-//   updatePaginationButtons();
 }
 
 
@@ -58,19 +57,61 @@ export const showPage =(page)=>{
     const backButton = document.querySelector("#prev");
     const nextButton = document.querySelector("#next");
     const totalPages = Math.ceil(defaultLoad.length / itemsPerPage);
+    const paginationContainer = document.getElementById('pagination')
+    const maxVisiblePages = 8 // Maximum number of visible pages in the pagination
 
+    let startPage, endPage;
+    if (totalPages <= maxVisiblePages) {
+        // Show all pages if the total number of pages is less than or equal to the maximum visible pages
+        startPage = 1;
+        endPage = totalPages;
+    } else {
+        // Calculate the range of pages to display
+        const middlePage = Math.ceil(maxVisiblePages / 2);
+        if (page <= middlePage) {
+        // If the current page is near the beginning, show the first 'maxVisiblePages' pages
+        startPage = 1;
+        endPage = maxVisiblePages;
+        } else if (page > totalPages - middlePage) {
+        // If the current page is near the end, show the last 'maxVisiblePages' pages
+        startPage = totalPages - maxVisiblePages + 1;
+        endPage = totalPages;
+        } else {
+        // Show a range of pages around the current page
+        startPage = page - middlePage + 1;
+        endPage = page + middlePage - 1;
+        }
+    }
+
+    let paginationHTML = '';
+    for (let i = startPage; i <= endPage; i++) {
+        const activeClass = i === page ? 'active' : '';
+        paginationHTML += `<li data-index="${i}" class="text-[0.9rem] px-1 w-8 text-center bg-white hover:border-2 hover:border-solid ${activeClass}">${i}</li>`;
+    }
+    paginationContainer.innerHTML = paginationHTML;
+
+     // Add event listener to pagination links
+     const paginationLinks = document.querySelectorAll('#pagination li');
+     paginationLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+             const pageIndex = parseInt(link.dataset.index);
+             currentPage = pageIndex;
+             showPage(currentPage);
+             paginationActiveStates(currentPage);
+        });
+     });
 
     if (page === 1) {
         backButton.classList.add("opacity-50","pointer-events-none");
-      } else {
+    } else {
         backButton.classList.remove("opacity-50","pointer-events-none");
-      }
+    }
     
-      if (page === totalPages) {
+    if (page === totalPages) {
         nextButton.classList.add("opacity-50","pointer-events-none");
-      } else {
+    } else {
         nextButton.classList.remove("opacity-50","pointer-events-none");
-      }
+    }
     
     countryContainer.innerHTML = '';                
     
@@ -170,16 +211,6 @@ export const paginationActiveStates =(page)=>{
         }
     });
 }
-
-//EventListener for pagination list
-const pagesRender = document.querySelectorAll("#pagination li");
-pagesRender.forEach((page)=>{
-    page.addEventListener("click",(event)=>{
-        const pageIndex = event.currentTarget.dataset.index ;
-        currentPage = pageIndex;
-        showPage(currentPage);
-    })
-})
 
 //eventListener to switch between up and down indicators
 const filterContainer= document.getElementById("filter-items");

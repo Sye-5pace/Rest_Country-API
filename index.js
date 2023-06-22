@@ -33,7 +33,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     filterItems.forEach((filterItem)=>{
         filterItem.addEventListener("click",filterQuery)
     });   
-
     
     
 });

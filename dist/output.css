@@ -548,6 +548,10 @@ video {
   pointer-events: none;
 }
 
+.visible {
+  visibility: visible;
+}
+
 .absolute {
   position: absolute;
 }
@@ -631,6 +635,10 @@ video {
   height: 100%;
 }
 
+.h-5 {
+  height: 1.25rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -667,6 +675,14 @@ video {
   width: 100%;
 }
 
+.w-4 {
+  width: 1rem;
+}
+
+.w-5 {
+  width: 1.25rem;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -701,6 +717,10 @@ video {
 
 .items-center {
   align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .justify-between {
@@ -822,6 +842,14 @@ video {
   padding: 0.75rem;
 }
 
+.p-5 {
+  padding: 1.25rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -850,6 +878,16 @@ video {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .pl-3 {
@@ -1002,6 +1040,16 @@ video {
     margin-right: 7.4rem;
   }
 
+  .mobile\:mx-\[7rem\] {
+    margin-left: 7rem;
+    margin-right: 7rem;
+  }
+
+  .mobile\:mx-\[4rem\] {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+
   .mobile\:mt-\[-1rem\] {
     margin-top: -1rem;
   }
@@ -1032,6 +1080,46 @@ video {
 
   .mobile\:w-full {
     width: 100%;
+  }
+
+  .mobile\:w-\[40\%\] {
+    width: 40%;
+  }
+
+  .mobile\:w-\[45\%\] {
+    width: 45%;
+  }
+
+  .mobile\:w-\[50\%\] {
+    width: 50%;
+  }
+
+  .mobile\:w-\[55\%\] {
+    width: 55%;
+  }
+
+  .mobile\:w-\[60\%\] {
+    width: 60%;
+  }
+
+  .mobile\:w-\[65\%\] {
+    width: 65%;
+  }
+
+  .mobile\:w-\[68\%\] {
+    width: 68%;
+  }
+
+  .mobile\:w-\[70\%\] {
+    width: 70%;
+  }
+
+  .mobile\:w-\[73\%\] {
+    width: 73%;
+  }
+
+  .mobile\:w-\[74\%\] {
+    width: 74%;
   }
 
   .mobile\:grid-cols-1 {
@@ -1113,6 +1201,30 @@ video {
 
   .tablet\:w-full {
     width: 100%;
+  }
+
+  .tablet\:w-\[37\%\] {
+    width: 37%;
+  }
+
+  .tablet\:w-\[40\%\] {
+    width: 40%;
+  }
+
+  .tablet\:w-\[43\%\] {
+    width: 43%;
+  }
+
+  .tablet\:w-\[45\%\] {
+    width: 45%;
+  }
+
+  .tablet\:w-\[46\%\] {
+    width: 46%;
+  }
+
+  .tablet\:w-\[35\.7\%\] {
+    width: 35.7%;
   }
 
   .tablet\:grid-cols-2 {
